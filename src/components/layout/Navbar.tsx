@@ -27,9 +27,9 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
             <img src={logo} alt="Priyanka Makeover Logo" className="h-12 w-12 rounded-full object-cover" />
-            <div className="hidden sm:block">
-              <h1 className="text-lg font-serif font-bold text-primary">Priyanka Makeover</h1>
-              <p className="text-xs text-muted-foreground">Enhancing Your Natural Beauty</p>
+            <div>
+              <h1 className="text-base sm:text-lg font-serif font-bold text-primary">Priyanka Makeover</h1>
+              <p className="text-[10px] sm:text-xs text-muted-foreground">Enhancing Your Natural Beauty</p>
             </div>
           </Link>
 
