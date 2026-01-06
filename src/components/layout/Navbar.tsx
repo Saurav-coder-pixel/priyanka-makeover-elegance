@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.jpeg";
+import BookingModal from "@/components/BookingModal";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -49,12 +50,12 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center gap-3">
-            <Button asChild size="sm">
-              <a href="tel:9650061103" className="flex items-center gap-2">
-                <Phone className="h-4 w-4" />
+            <BookingModal>
+              <Button size="sm" className="flex items-center gap-2">
+                <Sparkles className="h-4 w-4" />
                 Book Now
-              </a>
-            </Button>
+              </Button>
+            </BookingModal>
           </div>
 
           {/* Mobile Menu Button */}
@@ -83,12 +84,12 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
-              <Button asChild size="sm" className="mt-2 w-full">
-                <a href="tel:9650061103" className="flex items-center justify-center gap-2">
-                  <Phone className="h-4 w-4" />
+              <BookingModal>
+                <Button size="sm" className="mt-2 w-full flex items-center justify-center gap-2">
+                  <Sparkles className="h-4 w-4" />
                   Book Now
-                </a>
-              </Button>
+                </Button>
+              </BookingModal>
             </div>
           </div>
         )}

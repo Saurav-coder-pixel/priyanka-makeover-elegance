@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Heart, Scissors, Leaf } from "lucide-react";
 import logo from "@/assets/logo.jpeg";
+import BookingModal from "@/components/BookingModal";
 
 const HeroSection = () => {
   return (
@@ -41,16 +42,12 @@ const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-in">
-            <Button asChild size="lg" className="text-base px-8">
-              <a
-                href="https://wa.me/919650061103?text=Hi!%20I%20would%20like%20to%20book%20an%20appointment%20at%20Priyanka%20Makeover."
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+            <BookingModal>
+              <Button size="lg" className="text-base px-8">
                 <Sparkles className="mr-2 h-5 w-5" />
                 Book Appointment
-              </a>
-            </Button>
+              </Button>
+            </BookingModal>
             <Button asChild variant="outline" size="lg" className="text-base px-8">
               <Link to="/services">
                 View Services
