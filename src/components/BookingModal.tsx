@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Phone, MessageCircle } from "lucide-react";
 import {
   Dialog,
@@ -7,12 +8,60 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface BookingModalProps {
   children: React.ReactNode;
 }
 
+const services = [
+  { id: "bridal", label: "Bridal Makeup" },
+  { id: "party", label: "Party Makeup" },
+  { id: "engagement", label: "Engagement Makeup" },
+  { id: "facial", label: "Facial" },
+  { id: "cleanup", label: "Cleanup" },
+  { id: "detan", label: "D-Tan" },
+  { id: "bleach", label: "Bleach" },
+  { id: "haircut", label: "Hair Cut" },
+  { id: "haircolor", label: "Hair Colouring" },
+  { id: "hairspa", label: "Hair Spa" },
+  { id: "keratin", label: "Keratin Treatment" },
+  { id: "smoothening", label: "Smoothening" },
+  { id: "waxing", label: "Waxing" },
+  { id: "manicure", label: "Manicure" },
+  { id: "pedicure", label: "Pedicure" },
+  { id: "nailart", label: "Nail Art" },
+  { id: "threading", label: "Threading" },
+];
+
 const BookingModal = ({ children }: BookingModalProps) => {
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
+
+  const toggleService = (serviceId: string) => {
+    setSelectedServices((prev) =>
+      prev.includes(serviceId)
+        ? prev.filter((id) => id !== serviceId)
+        : [...prev, serviceId]
+    );
+  };
+
+  const getSelectedLabels = () => {
+    return services
+      .filter((s) => selectedServices.includes(s.id))
+      .map((s) => s.label)
+      .join(", ");
+  };
+
+  const getWhatsAppMessage = () => {
+    const selectedLabels = getSelectedLabels();
+    const message = selectedLabels
+      ? `Hi! I would like to book an appointment at Priyanka Makeover for the following services: ${selectedLabels}`
+      : "Hi! I would like to book an appointment at Priyanka Makeover.";
+    return encodeURIComponent(message);
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
@@ -24,13 +73,39 @@ const BookingModal = ({ children }: BookingModalProps) => {
         </DialogHeader>
         <div className="flex flex-col gap-4 py-4">
           <p className="text-center text-muted-foreground text-sm">
+            Select the services you're interested in
+          </p>
+          
+          <ScrollArea className="h-48 rounded-lg border border-border p-4">
+            <div className="grid grid-cols-2 gap-3">
+              {services.map((service) => (
+                <div key={service.id} className="flex items-center space-x-2">
+                  <Checkbox
+                    id={service.id}
+                    checked={selectedServices.includes(service.id)}
+                    onCheckedChange={() => toggleService(service.id)}
+                  />
+                  <Label
+                    htmlFor={service.id}
+                    className="text-sm cursor-pointer"
+                  >
+                    {service.label}
+                  </Label>
+                </div>
+              ))}
+            </div>
+          </ScrollArea>
+
+          {selectedServices.length > 0 && (
+            <p className="text-xs text-muted-foreground text-center">
+              Selected: {getSelectedLabels()}
+            </p>
+          )}
+
+          <p className="text-center text-muted-foreground text-sm mt-2">
             Choose how you'd like to reach us
           </p>
-          <Button
-            asChild
-            size="lg"
-            className="w-full gap-3 text-base"
-          >
+          <Button asChild size="lg" className="w-full gap-3 text-base">
             <a href="tel:9650061103">
               <Phone className="h-5 w-5" />
               Call Now
@@ -43,7 +118,7 @@ const BookingModal = ({ children }: BookingModalProps) => {
             className="w-full gap-3 text-base border-primary/30 hover:bg-primary/5"
           >
             <a
-              href="https://wa.me/919650061103"
+              href={`https://wa.me/919650061103?text=${getWhatsAppMessage()}`}
               target="_blank"
               rel="noopener noreferrer"
             >
