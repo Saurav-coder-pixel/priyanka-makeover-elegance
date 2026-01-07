@@ -42,14 +42,10 @@ const Footer = () => {
                 <Phone className="h-4 w-4" />
                 +91 96500 61103
               </a>
-              <a href="tel:7678487189" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
-                <Phone className="h-4 w-4" />
-                +91 76784 87189
-              </a>
-              <div className="flex items-start gap-2 text-sm text-muted-foreground">
+              <a href="https://maps.app.goo.gl/CMaeSaqiarwrA2DP7" target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
                 <span>Computer Gali, near NSG Campus, Sector 1B, Manesar, Gurugram, Haryana 122051</span>
-              </div>
+              </a>
             </div>
           </div>
 
@@ -63,6 +59,16 @@ const Footer = () => {
               </div>
             </div>
             <h4 className="font-semibold text-foreground pt-2">Follow Us</h4>
+            <div className="flex flex-col gap-2">
+            <a
+              href="https://www.instagram.com/priyanka__makeover____/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+            >
+              <Instagram className="h-5 w-5" />
+              @priyanka__makeover____
+            </a>
             <a
               href="https://instagram.com/priyanka_beauty_parl"
               target="_blank"
@@ -72,6 +78,7 @@ const Footer = () => {
               <Instagram className="h-5 w-5" />
               @priyanka_beauty_parl
             </a>
+            </div>
           </div>
         </div>
 

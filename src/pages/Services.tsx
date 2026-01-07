@@ -199,6 +199,31 @@ const Services = () => {
                 </CardContent>
               </Card>
             ))}
+            {/* Custom Service Card */}
+            <Card className="overflow-hidden">
+              <CardHeader className="bg-secondary/30">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                    <Sparkles className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-xl text-primary">Customizable Service</CardTitle>
+                    <CardDescription>Design your own beauty package</CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="pt-6">
+                <p className="text-muted-foreground mb-4">
+                  Can't find the perfect package? Mix and match from our services to create a personalized experience.
+                </p>
+                <Button
+                  className="w-full mt-4"
+                  onClick={() => handleBookNow("Custom Package")}
+                >
+                  Contact for a Custom Package
+                </Button>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>

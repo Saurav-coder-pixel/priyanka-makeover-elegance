@@ -111,16 +111,25 @@ const Gallery = () => {
           <div className="mt-12 text-center">
             <div className="bg-secondary/50 rounded-xl p-6 max-w-2xl mx-auto">
               <p className="text-muted-foreground">
-                📸 These are placeholder images. Follow us on Instagram 
+                📸 These are placeholder images. Follow us on Instagram{' '}
+                <a 
+                  href="https://www.instagram.com/priyanka__makeover____/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-primary font-medium hover:underline"
+                >
+                  @priyanka__makeover____
+                </a>
+                {' and '}
                 <a 
                   href="https://instagram.com/priyanka_beauty_parl" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-primary font-medium hover:underline ml-1"
+                  className="text-primary font-medium hover:underline"
                 >
                   @priyanka_beauty_parl
                 </a> 
-                {" "}for our latest work!
+                {' '}for our latest work!
               </p>
             </div>
           </div>

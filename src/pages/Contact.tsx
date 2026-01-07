@@ -85,9 +85,6 @@ Please confirm my booking. Thank you!`;
                       <a href="tel:9650061103" className="text-muted-foreground hover:text-primary transition-colors block">
                         +91 96500 61103
                       </a>
-                      <a href="tel:7678487189" className="text-muted-foreground hover:text-primary transition-colors block">
-                        +91 76784 87189
-                      </a>
                     </div>
                   </CardContent>
                 </Card>
@@ -100,11 +97,11 @@ Please confirm my booking. Thank you!`;
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Address</h3>
-                      <p className="text-muted-foreground">
+                      <a href="https://maps.app.goo.gl/CMaeSaqiarwrA2DP7" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                         Computer Gali, near NSG Campus,<br />
                         Sector 1B, Manesar,<br />
                         Gurugram, Haryana 122051
-                      </p>
+                      </a>
                     </div>
                   </CardContent>
                 </Card>
@@ -134,10 +131,18 @@ Please confirm my booking. Thank you!`;
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Instagram</h3>
                       <a
+                        href="https://www.instagram.com/priyanka__makeover____/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-primary transition-colors block"
+                      >
+                        @priyanka__makeover____
+                      </a>
+                      <a
                         href="https://instagram.com/priyanka_beauty_parl"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary transition-colors"
+                        className="text-muted-foreground hover:text-primary transition-colors block"
                       >
                         @priyanka_beauty_parl
                       </a>
@@ -274,7 +279,7 @@ Please confirm my booking. Thank you!`;
           <div className="text-center mt-6">
             <Button asChild variant="outline">
               <a
-                href="https://www.google.com/maps/dir/?api=1&destination=Sector+1B+Manesar+Gurugram+Haryana+122051"
+                href="https://maps.app.goo.gl/CMaeSaqiarwrA2DP7"
                 target="_blank"
                 rel="noopener noreferrer"
               >
