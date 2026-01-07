@@ -111,7 +111,7 @@ Please confirm my booking. Thank you!`;
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Address</h3>
-                      <a href="https://maps.app.goo.gl/CMaeSaqiarwrA2DP7" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                      <a href="https://maps.app.goo.gl/iXNcSGwJK7DcQ6VA8" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                         Computer Gali, near NSG Campus,<br />
                         Sector 1B, Manesar,<br />
                         Gurugram, Haryana 122051
@@ -288,7 +288,7 @@ Please confirm my booking. Thank you!`;
         <div className="container mx-auto px-4">
           <div className="rounded-2xl overflow-hidden border border-border">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3509.1234567890123!2d76.94123456789012!3d28.38765432109876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDIzJzE1LjYiTiA3NsKwNTYnMjguNCJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3509.0876543210987!2d76.9356789!3d28.3623456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d3d8b0b0b0b0b%3A0x0!2zUHJpeWFua2EgTWFrZW92ZXI!5e0!3m2!1sen!2sin!4v1704672000000!5m2!1sen!2sin"
               width="100%"
               height="400"
               style={{ border: 0 }}
@@ -302,7 +302,7 @@ Please confirm my booking. Thank you!`;
           <div className="text-center mt-6">
             <Button asChild variant="outline">
               <a
-                href="https://maps.app.goo.gl/CMaeSaqiarwrA2DP7"
+                href="https://maps.app.goo.gl/iXNcSGwJK7DcQ6VA8"
                 target="_blank"
                 rel="noopener noreferrer"
               >
