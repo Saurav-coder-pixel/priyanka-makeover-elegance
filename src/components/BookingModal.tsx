@@ -43,7 +43,7 @@ const BookingModal = ({ children }: BookingModalProps) => {
             className="w-full gap-3 text-base border-primary/30 hover:bg-primary/5"
           >
             <a
-              href="https://wa.me//+919650061103"
+              href="https://wa.me/919650061103"
               target="_blank"
               rel="noopener noreferrer"
             >
