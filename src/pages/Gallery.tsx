@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Sparkles, Heart, Scissors, Hand } from "lucide-react";
+import bridal1 from "@/assets/gallery/bridal-1.png";
+import bridal2 from "@/assets/gallery/bridal-2.png";
 
 const galleryData = {
   all: { title: "All", icon: Sparkles },
@@ -12,8 +14,8 @@ const galleryData = {
 };
 
 const galleryImages = [
-  { id: 1, category: "bridal", title: "Bridal Makeup 1" },
-  { id: 2, category: "bridal", title: "Bridal Makeup 2" },
+  { id: 1, category: "bridal", title: "Bridal Makeup 1", image: bridal1 },
+  { id: 2, category: "bridal", title: "Bridal Makeup 2", image: bridal2 },
   { id: 3, category: "bridal", title: "Party Makeup" },
   { id: 4, category: "facial", title: "Facial Treatment" },
   { id: 5, category: "facial", title: "Skin Glow" },
@@ -76,13 +78,21 @@ const Gallery = () => {
                         className="group relative aspect-square rounded-2xl overflow-hidden bg-muted cursor-pointer"
                         onClick={() => setSelectedImage(image.id)}
                       >
-                        {/* Placeholder */}
-                        <div className="absolute inset-0 flex items-center justify-center bg-secondary/50">
-                          <div className="text-center p-4">
-                            <Sparkles className="h-8 w-8 mx-auto mb-2 text-primary/30" />
-                            <p className="text-sm text-muted-foreground">{image.title}</p>
+                        {/* Image or Placeholder */}
+                        {image.image ? (
+                          <img 
+                            src={image.image} 
+                            alt={image.title}
+                            className="absolute inset-0 w-full h-full object-cover"
+                          />
+                        ) : (
+                          <div className="absolute inset-0 flex items-center justify-center bg-secondary/50">
+                            <div className="text-center p-4">
+                              <Sparkles className="h-8 w-8 mx-auto mb-2 text-primary/30" />
+                              <p className="text-sm text-muted-foreground">{image.title}</p>
+                            </div>
                           </div>
-                        </div>
+                        )}
 
                         {/* Hover overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -93,13 +103,21 @@ const Gallery = () => {
                       </div>
                     </DialogTrigger>
                     <DialogContent className="max-w-3xl p-0 overflow-hidden">
-                      <div className="aspect-[4/3] bg-muted flex items-center justify-center">
-                        <div className="text-center p-8">
-                          <Sparkles className="h-16 w-16 mx-auto mb-4 text-primary/30" />
-                          <h3 className="text-xl font-semibold text-foreground mb-2">{image.title}</h3>
-                          <p className="text-muted-foreground capitalize">{image.category}</p>
+                      {image.image ? (
+                        <img 
+                          src={image.image} 
+                          alt={image.title}
+                          className="w-full h-auto max-h-[80vh] object-contain"
+                        />
+                      ) : (
+                        <div className="aspect-[4/3] bg-muted flex items-center justify-center">
+                          <div className="text-center p-8">
+                            <Sparkles className="h-16 w-16 mx-auto mb-4 text-primary/30" />
+                            <h3 className="text-xl font-semibold text-foreground mb-2">{image.title}</h3>
+                            <p className="text-muted-foreground capitalize">{image.category}</p>
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </DialogContent>
                   </Dialog>
                 ))}
