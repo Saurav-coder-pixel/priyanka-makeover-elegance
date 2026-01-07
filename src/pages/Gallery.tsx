@@ -4,6 +4,16 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Sparkles, Heart, Scissors, Hand } from "lucide-react";
 import bridal1 from "@/assets/gallery/bridal-1.png";
 import bridal2 from "@/assets/gallery/bridal-2.png";
+import partyMakeup from "@/assets/gallery/party-makeup.png";
+import facialTreatment from "@/assets/gallery/facial-treatment.png";
+import skinGlow from "@/assets/gallery/skin-glow.png";
+import hairStyling from "@/assets/gallery/hair-styling.png";
+import hairTreatment from "@/assets/gallery/hair-treatment.png";
+import hairColor from "@/assets/gallery/hair-color.png";
+import nailArt from "@/assets/gallery/nail-art.png";
+import manicure from "@/assets/gallery/manicure.png";
+import engagementMakeup from "@/assets/gallery/engagement-makeup.png";
+import goldFacial from "@/assets/gallery/gold-facial.png";
 
 const galleryData = {
   all: { title: "All", icon: Sparkles },
@@ -16,16 +26,16 @@ const galleryData = {
 const galleryImages = [
   { id: 1, category: "bridal", title: "Bridal Makeup 1", image: bridal1 },
   { id: 2, category: "bridal", title: "Bridal Makeup 2", image: bridal2 },
-  { id: 3, category: "bridal", title: "Party Makeup" },
-  { id: 4, category: "facial", title: "Facial Treatment" },
-  { id: 5, category: "facial", title: "Skin Glow" },
-  { id: 6, category: "hair", title: "Hair Styling" },
-  { id: 7, category: "hair", title: "Hair Treatment" },
-  { id: 8, category: "hair", title: "Hair Color" },
-  { id: 9, category: "nails", title: "Nail Art" },
-  { id: 10, category: "nails", title: "Manicure" },
-  { id: 11, category: "bridal", title: "Engagement Makeup" },
-  { id: 12, category: "facial", title: "Gold Facial" },
+  { id: 3, category: "bridal", title: "Party Makeup", image: partyMakeup },
+  { id: 4, category: "facial", title: "Facial Treatment", image: facialTreatment },
+  { id: 5, category: "facial", title: "Skin Glow", image: skinGlow },
+  { id: 6, category: "hair", title: "Hair Styling", image: hairStyling },
+  { id: 7, category: "hair", title: "Hair Treatment", image: hairTreatment },
+  { id: 8, category: "hair", title: "Hair Color", image: hairColor },
+  { id: 9, category: "nails", title: "Nail Art", image: nailArt },
+  { id: 10, category: "nails", title: "Manicure", image: manicure },
+  { id: 11, category: "bridal", title: "Engagement Makeup", image: engagementMakeup },
+  { id: 12, category: "facial", title: "Gold Facial", image: goldFacial },
 ];
 
 const Gallery = () => {
