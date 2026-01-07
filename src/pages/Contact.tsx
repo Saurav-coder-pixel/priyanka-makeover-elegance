@@ -2,15 +2,16 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Phone, MapPin, Clock, Instagram, MessageCircle } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    service: "",
+    services: [] as string[],
     date: "",
     time: "",
   });
@@ -26,13 +27,26 @@ const Contact = () => {
     "Other",
   ];
 
+  const toggleService = (service: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      services: prev.services.includes(service)
+        ? prev.services.filter((s) => s !== service)
+        : [...prev.services, service],
+    }));
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const selectedServices = formData.services.length > 0 
+      ? formData.services.join(", ") 
+      : "Not specified";
+    
     const message = `Hi! I would like to book an appointment at Priyanka Makeover.
 
 Name: ${formData.name}
 Phone: ${formData.phone}
-Service: ${formData.service}
+Services: ${selectedServices}
 Preferred Date: ${formData.date}
 Preferred Time: ${formData.time}
 
@@ -187,22 +201,31 @@ Please confirm my booking. Thank you!`;
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="service">Select Service</Label>
-                      <Select
-                        value={formData.service}
-                        onValueChange={(value) => setFormData({ ...formData, service: value })}
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Choose a service" />
-                        </SelectTrigger>
-                        <SelectContent>
+                      <Label>Select Services</Label>
+                      <ScrollArea className="h-40 rounded-lg border border-border p-3 bg-background">
+                        <div className="grid grid-cols-2 gap-2">
                           {services.map((service) => (
-                            <SelectItem key={service} value={service}>
-                              {service}
-                            </SelectItem>
+                            <div key={service} className="flex items-center space-x-2">
+                              <Checkbox
+                                id={`contact-${service}`}
+                                checked={formData.services.includes(service)}
+                                onCheckedChange={() => toggleService(service)}
+                              />
+                              <Label
+                                htmlFor={`contact-${service}`}
+                                className="text-sm cursor-pointer font-normal"
+                              >
+                                {service}
+                              </Label>
+                            </div>
                           ))}
-                        </SelectContent>
-                      </Select>
+                        </div>
+                      </ScrollArea>
+                      {formData.services.length > 0 && (
+                        <p className="text-xs text-muted-foreground">
+                          Selected: {formData.services.join(", ")}
+                        </p>
+                      )}
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
