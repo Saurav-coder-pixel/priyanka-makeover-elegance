@@ -1,3 +1,4 @@
+import { useSearchParams } from "react-router-dom";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -135,7 +136,10 @@ const priceData = {
 };
 
 const Prices = () => {
+  const [searchParams] = useSearchParams();
+  const tabParam = searchParams.get("tab");
   const categories = Object.keys(priceData) as (keyof typeof priceData)[];
+  const defaultTab = categories.includes(tabParam as keyof typeof priceData) ? tabParam! : "facecare";
 
   return (
     <div className="min-h-screen">
@@ -156,7 +160,7 @@ const Prices = () => {
       {/* Price Tables */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <Tabs defaultValue="facecare" className="w-full">
+          <Tabs defaultValue={defaultTab} className="w-full">
             <TabsList className="flex flex-wrap justify-center gap-2 h-auto bg-transparent mb-8">
               {categories.map((key) => (
                 <TabsTrigger

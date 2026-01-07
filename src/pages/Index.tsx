@@ -66,21 +66,25 @@ const ServiceHighlights = () => {
       icon: Sparkles,
       title: "Bridal & Party Makeup",
       description: "Look stunning on your special day with our premium bridal and party makeup services",
+      priceTab: "bridal",
     },
     {
       icon: Heart,
       title: "Facial & Skin Care",
       description: "Rejuvenate your skin with our range of facials including Gold, Diamond, and Korean Glass",
+      priceTab: "facials",
     },
     {
       icon: Scissors,
       title: "Hair Styling & Treatment",
       description: "From trendy cuts to keratin treatments, we offer complete hair care solutions",
+      priceTab: "hairtreatment",
     },
     {
       icon: Leaf,
       title: "Waxing & Nail Services",
       description: "Complete body care with premium waxing and professional nail services",
+      priceTab: "waxing",
     },
   ];
 
@@ -98,16 +102,17 @@ const ServiceHighlights = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
-            <div
+            <Link
               key={index}
-              className="group p-6 bg-card rounded-2xl border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300"
+              to={`/prices?tab=${service.priceTab}`}
+              className="group p-6 bg-card rounded-2xl border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 cursor-pointer"
             >
               <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
                 <service.icon className="h-7 w-7 text-primary" />
               </div>
               <h3 className="text-lg font-semibold text-foreground mb-2">{service.title}</h3>
               <p className="text-sm text-muted-foreground">{service.description}</p>
-            </div>
+            </Link>
           ))}
         </div>
 
