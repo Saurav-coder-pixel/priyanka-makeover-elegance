@@ -17,7 +17,7 @@ const FloatingButtons = () => {
 
       {/* WhatsApp Button */}
       <a
-        href="https://wa.me/919650061103"
+        href="https://wa.me/919650061103?text=Hi%21%20I%20would%20like%20to%20book%20an%20appointment%20at%20Priyanka%20Makeover."
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center justify-center w-14 h-14 rounded-full bg-[hsl(142,70%,45%)] text-white shadow-lg hover:scale-110 transition-transform duration-200"
