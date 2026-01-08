@@ -288,14 +288,14 @@ Please confirm my booking. Thank you!`;
         <div className="container mx-auto px-4">
           <div className="rounded-2xl overflow-hidden border border-border">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3509.0876543210987!2d76.9356789!3d28.3623456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d3d8b0b0b0b0b%3A0x0!2zUHJpeWFua2EgTWFrZW92ZXI!5e0!3m2!1sen!2sin!4v1704672000000!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1754.2!2d76.93485!3d28.36195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d22fdd8a3c74f%3A0x8b7d88f8e0f8c8c8!2sPriyanka%20Beauty%20Parlour!5e0!3m2!1sen!2sin!4v1704672000000!5m2!1sen!2sin"
               width="100%"
-              height="400"
+              height="450"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Priyanka Makeover Location"
+              title="Priyanka Beauty Parlour Location"
               className="w-full"
             />
           </div>
