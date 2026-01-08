@@ -300,6 +300,9 @@ Please confirm my booking. Thank you!`;
             />
           </div>
           <div className="text-center mt-6">
+            <p className="text-muted-foreground mb-3">
+              Computer Gali, near NSG Campus, Sector 1B, Manesar, Gurugram, Haryana 122051
+            </p>
             <Button asChild variant="outline">
               <a
                 href="https://maps.app.goo.gl/iXNcSGwJK7DcQ6VA8"
