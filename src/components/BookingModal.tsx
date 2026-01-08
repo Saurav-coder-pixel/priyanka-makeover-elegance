@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Phone, MessageCircle } from "lucide-react";
 import {
   Dialog,
@@ -13,7 +13,8 @@ import { Label } from "@/components/ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface BookingModalProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
+  autoOpen?: boolean;
 }
 
 const services = [
@@ -36,8 +37,22 @@ const services = [
   { id: "threading", label: "Threading" },
 ];
 
-const BookingModal = ({ children }: BookingModalProps) => {
+const BookingModal = ({ children, autoOpen = false }: BookingModalProps) => {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (autoOpen) {
+      const hasSeenPopup = sessionStorage.getItem("bookingPopupSeen");
+      if (!hasSeenPopup) {
+        const timer = setTimeout(() => {
+          setOpen(true);
+          sessionStorage.setItem("bookingPopupSeen", "true");
+        }, 1500);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [autoOpen]);
 
   const toggleService = (serviceId: string) => {
     setSelectedServices((prev) =>
@@ -63,8 +78,8 @@ const BookingModal = ({ children }: BookingModalProps) => {
   };
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>{children}</DialogTrigger>
+    <Dialog open={open} onOpenChange={setOpen}>
+      {children && <DialogTrigger asChild>{children}</DialogTrigger>}
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="text-center text-xl font-serif text-primary">
