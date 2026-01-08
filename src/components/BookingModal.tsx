@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface BookingModalProps {
@@ -40,6 +41,12 @@ const services = [
 const BookingModal = ({ children, autoOpen = false }: BookingModalProps) => {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [open, setOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    date: "",
+    time: "",
+  });
 
   useEffect(() => {
     if (autoOpen) {
@@ -67,52 +74,102 @@ const BookingModal = ({ children, autoOpen = false }: BookingModalProps) => {
   };
 
   const getWhatsAppMessage = () => {
-    const selectedLabels = getSelectedLabels();
-    const message = selectedLabels
-      ? `Hi! I would like to book an appointment at Priyanka Makeover for the following services: ${selectedLabels}`
-      : "Hi! I would like to book an appointment at Priyanka Makeover.";
+    const selectedLabels = getSelectedLabels() || "Not specified";
+    const message = `Hi! I would like to book an appointment at Priyanka Makeover.
+
+Name: ${formData.name || "Not provided"}
+Phone: ${formData.phone || "Not provided"}
+Services: ${selectedLabels}
+Preferred Date: ${formData.date || "Not specified"}
+Preferred Time: ${formData.time || "Not specified"}
+
+Please confirm my booking. Thank you!`;
     return encodeURIComponent(message);
   };
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       {children && <DialogTrigger asChild>{children}</DialogTrigger>}
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-center text-xl font-serif text-primary">
             Book Your Appointment
           </DialogTitle>
         </DialogHeader>
         <div className="flex flex-col gap-4 py-4">
-          <p className="text-center text-muted-foreground text-sm">
-            Select the services you're interested in
-          </p>
-          
-          <ScrollArea className="h-48 rounded-lg border border-border p-4">
-            <div className="grid grid-cols-2 gap-3">
-              {services.map((service) => (
-                <div key={service.id} className="flex items-center space-x-2">
-                  <Checkbox
-                    id={service.id}
-                    checked={selectedServices.includes(service.id)}
-                    onCheckedChange={() => toggleService(service.id)}
-                  />
-                  <Label
-                    htmlFor={service.id}
-                    className="text-sm cursor-pointer"
-                  >
-                    {service.label}
-                  </Label>
-                </div>
-              ))}
-            </div>
-          </ScrollArea>
+          {/* Name */}
+          <div className="space-y-2">
+            <Label htmlFor="booking-name">Your Name</Label>
+            <Input
+              id="booking-name"
+              placeholder="Enter your name"
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            />
+          </div>
 
-          {selectedServices.length > 0 && (
-            <p className="text-xs text-muted-foreground text-center">
-              Selected: {getSelectedLabels()}
-            </p>
-          )}
+          {/* Phone */}
+          <div className="space-y-2">
+            <Label htmlFor="booking-phone">Phone Number</Label>
+            <Input
+              id="booking-phone"
+              type="tel"
+              placeholder="Enter your phone number"
+              value={formData.phone}
+              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+            />
+          </div>
+
+          {/* Services */}
+          <div className="space-y-2">
+            <Label>Select Services</Label>
+            <ScrollArea className="h-36 rounded-lg border border-border p-3">
+              <div className="grid grid-cols-2 gap-2">
+                {services.map((service) => (
+                  <div key={service.id} className="flex items-center space-x-2">
+                    <Checkbox
+                      id={service.id}
+                      checked={selectedServices.includes(service.id)}
+                      onCheckedChange={() => toggleService(service.id)}
+                    />
+                    <Label
+                      htmlFor={service.id}
+                      className="text-sm cursor-pointer font-normal"
+                    >
+                      {service.label}
+                    </Label>
+                  </div>
+                ))}
+              </div>
+            </ScrollArea>
+            {selectedServices.length > 0 && (
+              <p className="text-xs text-muted-foreground">
+                Selected: {getSelectedLabels()}
+              </p>
+            )}
+          </div>
+
+          {/* Date & Time */}
+          <div className="grid grid-cols-2 gap-3">
+            <div className="space-y-2">
+              <Label htmlFor="booking-date">Preferred Date</Label>
+              <Input
+                id="booking-date"
+                type="date"
+                value={formData.date}
+                onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="booking-time">Preferred Time</Label>
+              <Input
+                id="booking-time"
+                type="time"
+                value={formData.time}
+                onChange={(e) => setFormData({ ...formData, time: e.target.value })}
+              />
+            </div>
+          </div>
 
           <p className="text-center text-muted-foreground text-sm mt-2">
             Choose how you'd like to reach us
