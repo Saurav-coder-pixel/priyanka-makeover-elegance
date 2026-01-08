@@ -288,7 +288,7 @@ Please confirm my booking. Thank you!`;
         <div className="container mx-auto px-4">
           <div className="rounded-2xl overflow-hidden border border-border">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1754.2!2d76.93485!3d28.36195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d22fdd8a3c74f%3A0x8b7d88f8e0f8c8c8!2sPriyanka%20Beauty%20Parlour!5e0!3m2!1sen!2sin!4v1704672000000!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d877.1!2d76.9348!3d28.3620!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d22fdd8a3c74f%3A0x1e2c3d4e5f6a7b8c!2sPriyanka%20Beauty%20Parlour!5e0!3m2!1sen!2sin!4v1704672000000!5m2!1sen!2sin&q=Priyanka+Beauty+Parlour,+Sector+1B,+Manesar,+Gurugram"
               width="100%"
               height="450"
               style={{ border: 0 }}
