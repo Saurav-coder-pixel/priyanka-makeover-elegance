@@ -45,11 +45,8 @@ const BookingModal = ({ children, autoOpen = false }: BookingModalProps) => {
     if (autoOpen) {
       const hasSeenPopup = sessionStorage.getItem("bookingPopupSeen");
       if (!hasSeenPopup) {
-        const timer = setTimeout(() => {
-          setOpen(true);
-          sessionStorage.setItem("bookingPopupSeen", "true");
-        }, 1500);
-        return () => clearTimeout(timer);
+        setOpen(true);
+        sessionStorage.setItem("bookingPopupSeen", "true");
       }
     }
   }, [autoOpen]);
