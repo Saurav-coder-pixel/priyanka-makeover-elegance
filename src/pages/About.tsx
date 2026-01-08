@@ -42,7 +42,7 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative">
-              <div className="aspect-square rounded-3xl overflow-hidden bg-secondary/50">
+              <div className="aspect-square rounded-full overflow-hidden bg-secondary/50">
                 <img alt="Priyanka Makeover" className="w-full h-full object-cover" src={priyankaPortrait} />
               </div>
               <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-2xl bg-primary/10 -z-10" />
