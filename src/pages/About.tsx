@@ -1,32 +1,24 @@
 import { CheckCircle, Award, Shield, Heart } from "lucide-react";
 import logo from "@/assets/logo.jpeg";
-
 const About = () => {
-  const values = [
-    {
-      icon: Award,
-      title: "Professional Care",
-      description: "Our trained beauticians provide expert services with years of experience in the beauty industry.",
-    },
-    {
-      icon: Shield,
-      title: "Quality Products",
-      description: "We use only branded, high-quality beauty products to ensure the best results for your skin and hair.",
-    },
-    {
-      icon: CheckCircle,
-      title: "Hygiene Standards",
-      description: "We maintain strict hygiene protocols with sanitized tools and a clean environment for every client.",
-    },
-    {
-      icon: Heart,
-      title: "Customer Satisfaction",
-      description: "Your happiness is our priority. We go the extra mile to ensure you leave feeling beautiful and confident.",
-    },
-  ];
-
-  return (
-    <div className="min-h-screen">
+  const values = [{
+    icon: Award,
+    title: "Professional Care",
+    description: "Our trained beauticians provide expert services with years of experience in the beauty industry."
+  }, {
+    icon: Shield,
+    title: "Quality Products",
+    description: "We use only branded, high-quality beauty products to ensure the best results for your skin and hair."
+  }, {
+    icon: CheckCircle,
+    title: "Hygiene Standards",
+    description: "We maintain strict hygiene protocols with sanitized tools and a clean environment for every client."
+  }, {
+    icon: Heart,
+    title: "Customer Satisfaction",
+    description: "Your happiness is our priority. We go the extra mile to ensure you leave feeling beautiful and confident."
+  }];
+  return <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-br from-secondary via-background to-accent/30">
         <div className="absolute inset-0 opacity-5">
@@ -50,11 +42,7 @@ const About = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative">
               <div className="aspect-square rounded-3xl overflow-hidden bg-secondary/50">
-                <img
-                  src={logo}
-                  alt="Priyanka Makeover"
-                  className="w-full h-full object-cover"
-                />
+                <img alt="Priyanka Makeover" className="w-full h-full object-cover" src="/lovable-uploads/93295637-2ead-4712-9c98-4f5ec69b3cbb.png" />
               </div>
               <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-2xl bg-primary/10 -z-10" />
               <div className="absolute -top-6 -left-6 w-24 h-24 rounded-xl bg-accent/30 -z-10" />
@@ -95,18 +83,13 @@ const About = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value, index) => (
-              <div
-                key={index}
-                className="p-6 bg-card rounded-2xl border border-border text-center"
-              >
+            {values.map((value, index) => <div key={index} className="p-6 bg-card rounded-2xl border border-border text-center">
                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-5">
                   <value.icon className="h-7 w-7 text-primary" />
                 </div>
                 <h3 className="text-lg font-semibold text-foreground mb-2">{value.title}</h3>
                 <p className="text-sm text-muted-foreground">{value.description}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -134,8 +117,6 @@ const About = () => {
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default About;
