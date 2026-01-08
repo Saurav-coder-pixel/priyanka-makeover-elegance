@@ -3,6 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Sparkles, Heart, Scissors, Leaf } from "lucide-react";
 import logo from "@/assets/logo.png";
 import BookingModal from "@/components/BookingModal";
+import bridal1 from "@/assets/transformations/bridal-1.png";
+import bridal2 from "@/assets/transformations/bridal-2.png";
+import bridal3 from "@/assets/transformations/bridal-3.png";
 
 const HeroSection = () => {
   return (
@@ -127,6 +130,12 @@ const ServiceHighlights = () => {
 };
 
 const BeforeAfterSection = () => {
+  const transformations = [
+    { id: 1, image: bridal1, title: "Beautiful Bride", service: "Bridal Makeup" },
+    { id: 2, image: bridal2, title: "Beautiful Bride", service: "Bridal Makeup" },
+    { id: 3, image: bridal3, title: "Beautiful Bride", service: "Bridal Makeup" },
+  ];
+
   return (
     <section className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4">
@@ -140,18 +149,17 @@ const BeforeAfterSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[1, 2, 3].map((item) => (
-            <div key={item} className="relative overflow-hidden rounded-2xl aspect-[4/5] bg-muted group">
+          {transformations.map((item) => (
+            <div key={item.id} className="relative overflow-hidden rounded-2xl aspect-[4/5] bg-muted group">
+              <img 
+                src={item.image} 
+                alt={item.title} 
+                className="w-full h-full object-cover"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center text-muted-foreground">
-                  <Sparkles className="h-12 w-12 mx-auto mb-2 opacity-30" />
-                  <p className="text-sm">Bridal Transformation {item}</p>
-                </div>
-              </div>
               <div className="absolute bottom-4 left-4 right-4 text-primary-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <p className="font-medium">Beautiful Bride</p>
-                <p className="text-sm opacity-80">Bridal Makeup</p>
+                <p className="font-medium">{item.title}</p>
+                <p className="text-sm opacity-80">{item.service}</p>
               </div>
             </div>
           ))}
