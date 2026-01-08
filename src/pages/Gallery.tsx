@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Sparkles, Heart, Scissors, Hand } from "lucide-react";
+import { Sparkles, Heart, Scissors, Hand, Footprints } from "lucide-react";
 import bridal1 from "@/assets/gallery/bridal-1.png";
 import bridal2 from "@/assets/gallery/bridal-2.png";
 import partyMakeup from "@/assets/gallery/party-makeup.png";
@@ -14,6 +14,9 @@ import nailArt from "@/assets/gallery/nail-art.png";
 import manicure from "@/assets/gallery/manicure.png";
 import engagementMakeup from "@/assets/gallery/engagement-makeup.png";
 import goldFacial from "@/assets/gallery/gold-facial.png";
+import pedicure from "@/assets/gallery/pedicure.png";
+import hairSmoothing from "@/assets/gallery/hair-smoothing.png";
+import waxing from "@/assets/gallery/waxing.png";
 
 const galleryData = {
   all: { title: "All", icon: Sparkles },
@@ -21,6 +24,7 @@ const galleryData = {
   facial: { title: "Facials", icon: Heart },
   hair: { title: "Hair", icon: Scissors },
   nails: { title: "Nails", icon: Hand },
+  body: { title: "Body Care", icon: Footprints },
 };
 
 const galleryImages = [
@@ -36,6 +40,9 @@ const galleryImages = [
   { id: 10, category: "nails", title: "Manicure", image: manicure },
   { id: 11, category: "bridal", title: "Engagement Makeup", image: engagementMakeup },
   { id: 12, category: "facial", title: "Gold Facial", image: goldFacial },
+  { id: 13, category: "nails", title: "Pedicure", image: pedicure },
+  { id: 14, category: "hair", title: "Hair Smoothing", image: hairSmoothing },
+  { id: 15, category: "body", title: "Waxing", image: waxing },
 ];
 
 const Gallery = () => {
