@@ -286,7 +286,15 @@ Please confirm my booking. Thank you!`;
       {/* Map Section */}
       <section className="py-12 bg-secondary/30">
         <div className="container mx-auto px-4">
-          <div className="rounded-2xl overflow-hidden border border-border">
+          <div className="rounded-2xl overflow-hidden border border-border relative">
+            <a
+              href="https://maps.app.goo.gl/iXNcSGwJK7DcQ6VA8"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute top-3 left-3 z-10 text-sm text-primary hover:text-primary/80 hover:underline bg-background/90 px-2 py-1 rounded"
+            >
+              View larger map
+            </a>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1754.5!2d76.9355!3d28.3595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d3de8c83fffff%3A0x123456789abcdef!2sPriyanka%20Makeover!5e0!3m2!1sen!2sin!4v1704672000000!5m2!1sen!2sin&q=Priyanka+Makeover,+Computer+Gali,+Sector+1B,+Manesar,+Gurugram"
               width="100%"
