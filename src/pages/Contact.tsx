@@ -288,7 +288,7 @@ Please confirm my booking. Thank you!`;
         <div className="container mx-auto px-4">
           <div className="rounded-2xl overflow-hidden border border-border">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3512.5!2d76.9348!3d28.362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d3dfcffffff%3A0xffffffffffff!2sPriyanka%20Makeover!5e0!3m2!1sen!2sin!4v1704672000000!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1754.5!2d76.9355!3d28.3595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d3de8c83fffff%3A0x123456789abcdef!2sPriyanka%20Makeover!5e0!3m2!1sen!2sin!4v1704672000000!5m2!1sen!2sin&q=Priyanka+Makeover,+Computer+Gali,+Sector+1B,+Manesar,+Gurugram"
               width="100%"
               height="450"
               style={{ border: 0 }}
