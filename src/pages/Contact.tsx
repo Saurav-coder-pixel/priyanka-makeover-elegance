@@ -7,6 +7,14 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Phone, MapPin, Clock, Instagram, MessageCircle } from "lucide-react";
 
+import bridalImg1 from "@/assets/gallery/bridal-1.png";
+import bridalImg2 from "@/assets/gallery/bridal-2.png";
+import partyMakeupImg from "@/assets/gallery/party-makeup.png";
+import hairStylingImg from "@/assets/gallery/hair-styling.png";
+import facialImg from "@/assets/gallery/facial-treatment.png";
+import nailArtImg from "@/assets/gallery/nail-art.png";
+import skinGlowImg from "@/assets/gallery/skin-glow.png";
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -278,6 +286,78 @@ Please confirm my booking. Thank you!`;
                   </a>
                 </Button>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Salon Gallery Section */}
+      <section className="py-16 bg-secondary/20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-serif font-bold text-primary mb-3">
+              Our Salon
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Take a glimpse of our beautiful salon and the amazing transformations we create
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="aspect-square rounded-xl overflow-hidden">
+              <img 
+                src="/lovable-uploads/93295637-2ead-4712-9c98-4f5ec69b3cbb.png" 
+                alt="Salon interior" 
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div className="aspect-square rounded-xl overflow-hidden">
+              <img 
+                src={bridalImg1} 
+                alt="Bridal makeup" 
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div className="aspect-square rounded-xl overflow-hidden">
+              <img 
+                src={partyMakeupImg} 
+                alt="Party makeup" 
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div className="aspect-square rounded-xl overflow-hidden">
+              <img 
+                src={hairStylingImg} 
+                alt="Hair styling" 
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div className="aspect-square rounded-xl overflow-hidden">
+              <img 
+                src={facialImg} 
+                alt="Facial treatment" 
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div className="aspect-square rounded-xl overflow-hidden">
+              <img 
+                src={nailArtImg} 
+                alt="Nail art" 
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div className="aspect-square rounded-xl overflow-hidden">
+              <img 
+                src={bridalImg2} 
+                alt="Bridal look" 
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div className="aspect-square rounded-xl overflow-hidden">
+              <img 
+                src={skinGlowImg} 
+                alt="Skin treatment" 
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
             </div>
           </div>
         </div>
