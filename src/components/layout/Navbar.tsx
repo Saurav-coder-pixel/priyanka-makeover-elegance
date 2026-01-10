@@ -85,7 +85,7 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
-              <Link to="/contact#book-appointment">
+              <Link to="/contact#book-appointment" onClick={() => setIsOpen(false)}>
                 <Button size="sm" className="mt-2 w-full flex items-center justify-center gap-2 bg-[hsl(142,70%,45%)] hover:bg-[hsl(142,70%,40%)]">
                   <Sparkles className="h-4 w-4" />
                   Book Now
