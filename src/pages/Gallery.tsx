@@ -6,7 +6,6 @@ import bridal1 from "@/assets/gallery/bridal-1.png";
 import bridal2 from "@/assets/gallery/bridal-2.png";
 import partyMakeup from "@/assets/gallery/party-makeup.png";
 import facialTreatment from "@/assets/gallery/facial-treatment.png";
-import skinGlow from "@/assets/gallery/skin-glow.png";
 import hairStyling from "@/assets/gallery/hair-styling.png";
 import hairTreatment from "@/assets/gallery/hair-treatment.png";
 import hairColor from "@/assets/gallery/hair-color.png";
@@ -32,17 +31,16 @@ const galleryImages = [
   { id: 2, category: "bridal", title: "Bridal Makeup 2", image: bridal2 },
   { id: 3, category: "bridal", title: "Party Makeup", image: partyMakeup },
   { id: 4, category: "facial", title: "Facial Treatment", image: facialTreatment },
-  { id: 5, category: "facial", title: "Skin Glow", image: skinGlow },
-  { id: 6, category: "hair", title: "Hair Styling", image: hairStyling },
-  { id: 7, category: "hair", title: "Hair Treatment", image: hairTreatment },
-  { id: 8, category: "hair", title: "Hair Color", image: hairColor },
-  { id: 9, category: "nails", title: "Nail Art", image: nailArt },
-  { id: 10, category: "nails", title: "Manicure", image: manicure },
-  { id: 11, category: "bridal", title: "Engagement Makeup", image: engagementMakeup },
-  { id: 12, category: "facial", title: "Gold Facial", image: goldFacial },
-  { id: 13, category: "nails", title: "Pedicure", image: pedicure },
-  { id: 14, category: "hair", title: "Hair Smoothing", image: hairSmoothing },
-  { id: 15, category: "body", title: "Waxing", image: waxing },
+  { id: 5, category: "hair", title: "Hair Styling", image: hairStyling },
+  { id: 6, category: "hair", title: "Hair Treatment", image: hairTreatment },
+  { id: 7, category: "hair", title: "Hair Color", image: hairColor },
+  { id: 8, category: "nails", title: "Nail Art", image: nailArt },
+  { id: 9, category: "nails", title: "Manicure", image: manicure },
+  { id: 10, category: "bridal", title: "Engagement Makeup", image: engagementMakeup },
+  { id: 11, category: "facial", title: "Gold Facial", image: goldFacial },
+  { id: 12, category: "nails", title: "Pedicure", image: pedicure },
+  { id: 13, category: "hair", title: "Hair Smoothing", image: hairSmoothing },
+  { id: 14, category: "body", title: "Waxing", image: waxing },
 ];
 
 const Gallery = () => {
@@ -164,7 +162,8 @@ const Gallery = () => {
                 >
                   @priyanka_beauty_parl
                 </a> 
-                {' '}for our latest work!
+                {' '}
+                for our latest work!
               </p>
             </div>
           </div>

@@ -100,7 +100,7 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <p className="text-4xl font-bold mb-2">1000+</p>
+              <p className="text-4xl font-bold mb-2">1500+</p>
               <p className="text-primary-foreground/80">Happy Clients</p>
             </div>
             <div>
@@ -112,7 +112,7 @@ const About = () => {
               <p className="text-primary-foreground/80">Services Offered</p>
             </div>
             <div>
-              <p className="text-4xl font-bold mb-2">5+</p>
+              <p className="text-4xl font-bold mb-2">15+</p>
               <p className="text-primary-foreground/80">Years Experience</p>
             </div>
           </div>
