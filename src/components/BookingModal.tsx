@@ -24,7 +24,6 @@ const services = [
   { id: "engagement", label: "Engagement Makeup" },
   { id: "facial", label: "Facial" },
   { id: "cleanup", label: "Cleanup" },
-  { id: "detan", label: "D-Tan" },
   { id: "bleach", label: "Bleach" },
   { id: "haircut", label: "Hair Cut" },
   { id: "haircolor", label: "Hair Colouring" },
@@ -35,7 +34,8 @@ const services = [
   { id: "manicure", label: "Manicure" },
   { id: "pedicure", label: "Pedicure" },
   { id: "nailart", label: "Nail Art" },
-  { id: "threading", label: "Threading" },
+  { id: "threading", label: "Threading " },
+  { id: "other", label: "Other" },
 ];
 
 const BookingModal = ({ children, autoOpen = false }: BookingModalProps) => {
@@ -47,6 +47,10 @@ const BookingModal = ({ children, autoOpen = false }: BookingModalProps) => {
     date: "",
     time: "",
   });
+
+  // validation state for phone number (must be exactly 10 digits)
+  const [phoneError, setPhoneError] = useState<string | null>(null);
+  const isPhoneValid = /^\d{10}$/.test(formData.phone);
 
   useEffect(() => {
     if (autoOpen) {
@@ -117,10 +121,32 @@ Please confirm my booking. Thank you!`;
             <Input
               id="modal-phone"
               type="tel"
-              placeholder="Enter your phone number"
+              inputMode="numeric"
+              pattern="\\d{10}"
+              maxLength={10}
+              placeholder="Enter your 10-digit phone number"
               value={formData.phone}
-              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+              onChange={(e) => {
+                // accept digits only and limit to 10
+                const digits = e.target.value.replace(/\D/g, '').slice(0, 10);
+                setFormData({ ...formData, phone: digits });
+                if (digits.length === 10) {
+                  setPhoneError(null);
+                } else {
+                  setPhoneError('Phone number must be exactly 10 digits');
+                }
+              }}
+              onBlur={() => {
+                if (!/^\d{10}$/.test(formData.phone)) {
+                  setPhoneError('Phone number must be exactly 10 digits');
+                } else {
+                  setPhoneError(null);
+                }
+              }}
             />
+            {phoneError && (
+              <p className="text-sm text-destructive mt-1">{phoneError}</p>
+            )}
           </div>
 
           {/* Services Selection */}
@@ -184,19 +210,21 @@ Please confirm my booking. Thank you!`;
             </a>
           </Button>
           <Button
-            asChild
             size="lg"
             variant="outline"
-            className="w-full gap-3 text-base border-primary/30 hover:bg-primary/5"
+            className={`w-full gap-3 text-base border-primary/30 hover:bg-primary/5 ${!isPhoneValid ? 'opacity-50 cursor-not-allowed' : ''}`}
+            disabled={!isPhoneValid}
+            onClick={() => {
+              if (!isPhoneValid) {
+                setPhoneError('Phone number must be exactly 10 digits');
+                return;
+              }
+              const url = `https://wa.me/919650061103?text=${getWhatsAppMessage()}`;
+              window.open(url, '_blank', 'noopener noreferrer');
+            }}
           >
-            <a
-              href={`https://wa.me/919650061103?text=${getWhatsAppMessage()}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <MessageCircle className="h-5 w-5 text-green-600" />
-              WhatsApp Booking
-            </a>
+            <MessageCircle className="h-5 w-5 text-green-600" />
+            WhatsApp Booking
           </Button>
         </div>
       </DialogContent>

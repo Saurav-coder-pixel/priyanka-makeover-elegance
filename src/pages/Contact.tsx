@@ -31,6 +31,9 @@ const Contact = () => {
     date: "",
     time: "",
   });
+  // phone validation state (must be exactly 10 digits)
+  const [phoneError, setPhoneError] = useState<string | null>(null);
+  const isPhoneValid = /^\d{10}$/.test(formData.phone);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -50,12 +53,21 @@ const Contact = () => {
   const services = [
     "Bridal Makeup",
     "Party Makeup",
-    "Facial Treatment",
+    "Engagement Makeup",
+    "Facial",
+    "Cleanup",
+    "D-Tan",
+    "Bleach",
     "Hair Cut",
-    "Hair Treatment",
+    "Hair Colouring",
+    "Hair Spa",
+    "Keratin Treatment",
+    "Smoothening",
     "Waxing",
-    "Manicure & Pedicure",
-    "Other",
+    "Manicure",
+    "Pedicure",
+    "Nail Art",
+    "Threading",
   ];
 
   const toggleService = (service: string) => {
@@ -69,6 +81,10 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!/^\d{10}$/.test(formData.phone)) {
+      setPhoneError('Phone number must be exactly 10 digits');
+      return;
+    }
     const selectedServices = formData.services.length > 0 
       ? formData.services.join(", ") 
       : "Not specified";
@@ -222,11 +238,32 @@ Please confirm my booking. Thank you!`;
                       <Input
                         id="phone"
                         type="tel"
-                        placeholder="Enter your phone number"
+                        inputMode="numeric"
+                        pattern="\\d{10}"
+                        maxLength={10}
+                        placeholder="Enter your 10-digit phone number"
                         value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        onChange={(e) => {
+                          const digits = e.target.value.replace(/\D/g, '').slice(0, 10);
+                          setFormData({ ...formData, phone: digits });
+                          if (digits.length === 10) {
+                            setPhoneError(null);
+                          } else {
+                            setPhoneError('Phone number must be exactly 10 digits');
+                          }
+                        }}
+                        onBlur={() => {
+                          if (!/^\d{10}$/.test(formData.phone)) {
+                            setPhoneError('Phone number must be exactly 10 digits');
+                          } else {
+                            setPhoneError(null);
+                          }
+                        }}
                         required
                       />
+                      {phoneError && (
+                        <p className="text-sm text-destructive mt-1">{phoneError}</p>
+                      )}
                     </div>
 
                     <div className="space-y-2">
@@ -280,7 +317,7 @@ Please confirm my booking. Thank you!`;
                       </div>
                     </div>
 
-                    <Button type="submit" className="w-full" size="lg">
+                    <Button type="submit" className={`w-full ${!isPhoneValid ? 'opacity-50 cursor-not-allowed' : ''}`} size="lg" disabled={!isPhoneValid}>
                       <MessageCircle className="mr-2 h-5 w-5" />
                       Book via WhatsApp
                     </Button>
