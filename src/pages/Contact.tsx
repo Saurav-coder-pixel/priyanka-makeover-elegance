@@ -338,7 +338,7 @@ Please confirm my booking. Thank you!`;
               View larger map
             </a>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d877.1!2d76.9348!3d28.3620!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d22fdd8a3c74f%3A0x1e2c3d4e5f6a7b8c!2sPriyanka%20Beauty%20Parlour!5e0!3m2!1sen!2sin!4v1704672000000!5m2!1sen!2sin&q=Priyanka+Makeover,+Sector+1B,+Manesar,+Gurugram"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3511.405479316859!2d76.93657467527811!3d28.346588275822192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8304deb977702d31%3A0xd254ed6fb05051b0!2sPriyanka%20Makeover!5e0!3m2!1sen!2sin!4v1768041011222!5m2!1sen!2sin"
               width="100%"
               height="450"
               style={{ border: 0 }}
