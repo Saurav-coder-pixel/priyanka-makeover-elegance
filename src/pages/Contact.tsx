@@ -7,14 +7,6 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Phone, MapPin, Clock, Instagram, MessageCircle } from "lucide-react";
 
-import bridalImg1 from "@/assets/gallery/bridal-1.png";
-import bridalImg2 from "@/assets/gallery/bridal-2.png";
-import partyMakeupImg from "@/assets/gallery/party-makeup.png";
-import hairStylingImg from "@/assets/gallery/hair-styling.png";
-import facialImg from "@/assets/gallery/facial-treatment.png";
-import nailArtImg from "@/assets/gallery/nail-art.png";
-import skinGlowImg from "@/assets/gallery/skin-glow.png";
-
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -119,10 +111,8 @@ Please confirm my booking. Thank you!`;
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Address</h3>
-                      <a href="https://maps.app.goo.gl/iXNcSGwJK7DcQ6VA8" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                        Computer Gali, near NSG Campus,<br />
-                        Sector 1B, Manesar,<br />
-                        Gurugram, Haryana 122051
+                      <a href="https://maps.app.goo.gl/Dp7QxtXZ5L3ZULaJA" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                        Priyanka Makeover, Sector 1B, Manesar, Gurugram
                       </a>
                     </div>
                   </CardContent>
@@ -302,7 +292,7 @@ Please confirm my booking. Thank you!`;
               Take a glimpse of our beautiful salon and the amazing transformations we create
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="aspect-square rounded-xl overflow-hidden">
               <img 
                 src="/lovable-uploads/93295637-2ead-4712-9c98-4f5ec69b3cbb.png" 
@@ -312,50 +302,22 @@ Please confirm my booking. Thank you!`;
             </div>
             <div className="aspect-square rounded-xl overflow-hidden">
               <img 
-                src={bridalImg1} 
+                src="/salon/salon-2.jpeg" 
                 alt="Bridal makeup" 
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
             <div className="aspect-square rounded-xl overflow-hidden">
               <img 
-                src={partyMakeupImg} 
+                src="/salon/salon-3.jpeg" 
                 alt="Party makeup" 
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
             <div className="aspect-square rounded-xl overflow-hidden">
               <img 
-                src={hairStylingImg} 
+                src="/salon/salon-4.jpeg" 
                 alt="Hair styling" 
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="aspect-square rounded-xl overflow-hidden">
-              <img 
-                src={facialImg} 
-                alt="Facial treatment" 
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="aspect-square rounded-xl overflow-hidden">
-              <img 
-                src={nailArtImg} 
-                alt="Nail art" 
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="aspect-square rounded-xl overflow-hidden">
-              <img 
-                src={bridalImg2} 
-                alt="Bridal look" 
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="aspect-square rounded-xl overflow-hidden">
-              <img 
-                src={skinGlowImg} 
-                alt="Skin treatment" 
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
@@ -376,7 +338,7 @@ Please confirm my booking. Thank you!`;
               View larger map
             </a>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1754.5!2d76.9355!3d28.3595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d3de8c83fffff%3A0x123456789abcdef!2sPriyanka%20Makeover!5e0!3m2!1sen!2sin!4v1704672000000!5m2!1sen!2sin&q=Priyanka+Makeover,+Computer+Gali,+Sector+1B,+Manesar,+Gurugram"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d877.1!2d76.9348!3d28.3620!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d22fdd8a3c74f%3A0x1e2c3d4e5f6a7b8c!2sPriyanka%20Beauty%20Parlour!5e0!3m2!1sen!2sin!4v1704672000000!5m2!1sen!2sin&q=Priyanka+Makeover,+Sector+1B,+Manesar,+Gurugram"
               width="100%"
               height="450"
               style={{ border: 0 }}
@@ -389,11 +351,11 @@ Please confirm my booking. Thank you!`;
           </div>
           <div className="text-center mt-6">
             <p className="text-muted-foreground mb-3">
-              Computer Gali, near NSG Campus, Sector 1B, Manesar, Gurugram, Haryana 122051
+              Priyanka Makeover, Sector 1B, Manesar, Gurugram
             </p>
             <Button asChild variant="outline">
               <a
-                href="https://maps.app.goo.gl/iXNcSGwJK7DcQ6VA8"
+                href="https://maps.app.goo.gl/cFqYDMdj7WtN1rGw8"
                 target="_blank"
                 rel="noopener noreferrer"
               >
