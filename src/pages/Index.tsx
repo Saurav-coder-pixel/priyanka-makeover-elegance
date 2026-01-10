@@ -267,7 +267,7 @@ const CTASection = () => {
 const Index = () => {
   return (
     <>
-      <BookingModal autoOpen />
+      <BookingModal />
       <HeroSection />
       <ServiceHighlights />
       <BeforeAfterSection />

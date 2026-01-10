@@ -104,7 +104,7 @@ const About = () => {
               <p className="text-primary-foreground/80">Happy Clients</p>
             </div>
             <div>
-              <p className="text-4xl font-bold mb-2">500+</p>
+              <p className="text-4xl font-bold mb-2">300+</p>
               <p className="text-primary-foreground/80">Bridal Makeups</p>
             </div>
             <div>
