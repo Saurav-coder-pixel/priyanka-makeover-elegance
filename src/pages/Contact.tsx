@@ -5,7 +5,8 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Phone, MapPin, Clock, Instagram, MessageCircle } from "lucide-react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Phone, MapPin, Clock, Instagram, MessageCircle, X, ChevronLeft, ChevronRight } from "lucide-react";
 
 // Salon images
 import salonStorefront from "@/assets/salon/storefront.jpg";
@@ -13,6 +14,14 @@ import salonInterior1 from "@/assets/salon/interior-1.jpg";
 import salonInterior2 from "@/assets/salon/interior-2.jpg";
 import salonInterior3 from "@/assets/salon/interior-3.jpg";
 import salonInterior4 from "@/assets/salon/interior-4.jpg";
+
+const salonImages = [
+  { src: salonStorefront, alt: "Priyanka Makeover Storefront" },
+  { src: salonInterior1, alt: "Salon styling station" },
+  { src: salonInterior2, alt: "Salon products and equipment" },
+  { src: salonInterior3, alt: "Salon treatment area" },
+  { src: salonInterior4, alt: "Salon waiting area" },
+];
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -22,6 +31,21 @@ const Contact = () => {
     date: "",
     time: "",
   });
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const openLightbox = (index: number) => {
+    setCurrentImageIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % salonImages.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + salonImages.length) % salonImages.length);
+  };
 
   const services = [
     "Bridal Makeup",
@@ -300,42 +324,65 @@ Please confirm my booking. Thank you!`;
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            <div className="aspect-[3/4] rounded-xl overflow-hidden">
-              <img 
-                src={salonStorefront} 
-                alt="Priyanka Makeover Storefront" 
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="aspect-[3/4] rounded-xl overflow-hidden">
-              <img 
-                src={salonInterior1} 
-                alt="Salon styling station" 
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="aspect-[3/4] rounded-xl overflow-hidden">
-              <img 
-                src={salonInterior2} 
-                alt="Salon products and equipment" 
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="aspect-[3/4] rounded-xl overflow-hidden">
-              <img 
-                src={salonInterior3} 
-                alt="Salon treatment area" 
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="aspect-[3/4] rounded-xl overflow-hidden">
-              <img 
-                src={salonInterior4} 
-                alt="Salon waiting area" 
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
+            {salonImages.map((image, index) => (
+              <div 
+                key={index}
+                className="aspect-[3/4] rounded-xl overflow-hidden cursor-pointer"
+                onClick={() => openLightbox(index)}
+              >
+                <img 
+                  src={image.src} 
+                  alt={image.alt} 
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            ))}
           </div>
+
+          {/* Lightbox Modal */}
+          <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
+            <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background/95 backdrop-blur-sm border-none">
+              <div className="relative flex items-center justify-center w-full h-[90vh]">
+                {/* Close button */}
+                <button
+                  onClick={() => setLightboxOpen(false)}
+                  className="absolute top-4 right-4 z-50 p-2 rounded-full bg-background/80 hover:bg-background transition-colors"
+                >
+                  <X className="h-6 w-6 text-foreground" />
+                </button>
+
+                {/* Previous button */}
+                <button
+                  onClick={prevImage}
+                  className="absolute left-4 z-50 p-2 rounded-full bg-background/80 hover:bg-background transition-colors"
+                >
+                  <ChevronLeft className="h-8 w-8 text-foreground" />
+                </button>
+
+                {/* Image */}
+                <img
+                  src={salonImages[currentImageIndex].src}
+                  alt={salonImages[currentImageIndex].alt}
+                  className="max-w-full max-h-full object-contain animate-fade-in"
+                />
+
+                {/* Next button */}
+                <button
+                  onClick={nextImage}
+                  className="absolute right-4 z-50 p-2 rounded-full bg-background/80 hover:bg-background transition-colors"
+                >
+                  <ChevronRight className="h-8 w-8 text-foreground" />
+                </button>
+
+                {/* Image counter */}
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-background/80 px-4 py-2 rounded-full">
+                  <span className="text-foreground text-sm">
+                    {currentImageIndex + 1} / {salonImages.length}
+                  </span>
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
       </section>
 
