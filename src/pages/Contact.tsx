@@ -341,22 +341,22 @@ Please confirm my booking. Thank you!`;
 
           {/* Lightbox Modal */}
           <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
-            <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-black/90 backdrop-blur-sm border-none [&>button]:hidden">
+            <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 bg-background/95 backdrop-blur-sm border-none">
               <div className="relative flex items-center justify-center w-full h-[90vh]">
                 {/* Close button */}
                 <button
                   onClick={() => setLightboxOpen(false)}
-                  className="absolute top-4 right-4 z-50 p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors"
+                  className="absolute top-4 right-4 z-50 p-2 rounded-full bg-background/80 hover:bg-background transition-colors"
                 >
-                  <X className="h-6 w-6 text-white" />
+                  <X className="h-6 w-6 text-foreground" />
                 </button>
 
                 {/* Previous button */}
                 <button
                   onClick={prevImage}
-                  className="absolute left-4 z-50 p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors"
+                  className="absolute left-4 z-50 p-2 rounded-full bg-background/80 hover:bg-background transition-colors"
                 >
-                  <ChevronLeft className="h-8 w-8 text-white" />
+                  <ChevronLeft className="h-8 w-8 text-foreground" />
                 </button>
 
                 {/* Image */}
@@ -369,14 +369,14 @@ Please confirm my booking. Thank you!`;
                 {/* Next button */}
                 <button
                   onClick={nextImage}
-                  className="absolute right-4 z-50 p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors"
+                  className="absolute right-4 z-50 p-2 rounded-full bg-background/80 hover:bg-background transition-colors"
                 >
-                  <ChevronRight className="h-8 w-8 text-white" />
+                  <ChevronRight className="h-8 w-8 text-foreground" />
                 </button>
 
                 {/* Image counter */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 px-4 py-2 rounded-full">
-                  <span className="text-white text-sm">
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-background/80 px-4 py-2 rounded-full">
+                  <span className="text-foreground text-sm">
                     {currentImageIndex + 1} / {salonImages.length}
                   </span>
                 </div>
