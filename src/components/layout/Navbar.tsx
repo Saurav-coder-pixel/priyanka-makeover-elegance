@@ -3,7 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
-import BookingModal from "@/components/BookingModal";
+// Booking now navigates to the Contact page's booking section
+
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -50,12 +51,12 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center gap-3">
-            <BookingModal>
-              <Button size="sm" className="flex items-center gap-2">
+            <Link to="/contact#book-appointment" className="inline-block">
+              <Button size="sm" className="flex items-center gap-2 bg-[hsl(142,70%,45%)] hover:bg-[hsl(142,70%,40%)]">
                 <Sparkles className="h-4 w-4" />
                 Book Now
               </Button>
-            </BookingModal>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -84,12 +85,12 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
-              <BookingModal>
-                <Button size="sm" className="mt-2 w-full flex items-center justify-center gap-2">
+              <Link to="/contact#book-appointment">
+                <Button size="sm" className="mt-2 w-full flex items-center justify-center gap-2 bg-[hsl(142,70%,45%)] hover:bg-[hsl(142,70%,40%)]">
                   <Sparkles className="h-4 w-4" />
                   Book Now
                 </Button>
-              </BookingModal>
+              </Link>
             </div>
           </div>
         )}

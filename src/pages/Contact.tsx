@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -35,6 +36,19 @@ const Contact = () => {
   const [phoneError, setPhoneError] = useState<string | null>(null);
   const isPhoneValid = /^\d{10}$/.test(formData.phone);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+
+  // scroll-to-booking refs
+  const bookingRef = useRef<HTMLDivElement | null>(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash === '#book-appointment' && bookingRef.current) {
+      bookingRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // focus first input inside booking form for convenience
+      const firstInput = bookingRef.current.querySelector('input');
+      if (firstInput) (firstInput as HTMLInputElement).focus();
+    }
+  }, [location]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const openLightbox = (index: number) => {
@@ -212,7 +226,7 @@ Please confirm my booking. Thank you!`;
             </div>
 
             {/* Booking Form */}
-            <div>
+            <div ref={bookingRef} id="book-appointment">
               <Card className="shadow-lg">
                 <CardHeader>
                   <CardTitle className="text-xl text-primary">Book an Appointment</CardTitle>
