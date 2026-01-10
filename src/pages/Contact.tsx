@@ -7,6 +7,13 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Phone, MapPin, Clock, Instagram, MessageCircle } from "lucide-react";
 
+// Salon images
+import salonStorefront from "@/assets/salon/storefront.jpg";
+import salonInterior1 from "@/assets/salon/interior-1.jpg";
+import salonInterior2 from "@/assets/salon/interior-2.jpg";
+import salonInterior3 from "@/assets/salon/interior-3.jpg";
+import salonInterior4 from "@/assets/salon/interior-4.jpg";
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -292,32 +299,39 @@ Please confirm my booking. Thank you!`;
               Take a glimpse of our beautiful salon and the amazing transformations we create
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="aspect-square rounded-xl overflow-hidden">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div className="aspect-[3/4] rounded-xl overflow-hidden">
               <img 
-                src="/lovable-uploads/93295637-2ead-4712-9c98-4f5ec69b3cbb.png" 
-                alt="Salon interior" 
+                src={salonStorefront} 
+                alt="Priyanka Makeover Storefront" 
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
-            <div className="aspect-square rounded-xl overflow-hidden">
+            <div className="aspect-[3/4] rounded-xl overflow-hidden">
               <img 
-                src="/salon/salon-2.jpeg" 
-                alt="Bridal makeup" 
+                src={salonInterior1} 
+                alt="Salon styling station" 
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
-            <div className="aspect-square rounded-xl overflow-hidden">
+            <div className="aspect-[3/4] rounded-xl overflow-hidden">
               <img 
-                src="/salon/salon-3.jpeg" 
-                alt="Party makeup" 
+                src={salonInterior2} 
+                alt="Salon products and equipment" 
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
-            <div className="aspect-square rounded-xl overflow-hidden">
+            <div className="aspect-[3/4] rounded-xl overflow-hidden">
               <img 
-                src="/salon/salon-4.jpeg" 
-                alt="Hair styling" 
+                src={salonInterior3} 
+                alt="Salon treatment area" 
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div className="aspect-[3/4] rounded-xl overflow-hidden">
+              <img 
+                src={salonInterior4} 
+                alt="Salon waiting area" 
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
