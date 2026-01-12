@@ -1,5 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { Phone, MessageCircle } from "lucide-react";
 import {
   Dialog,
@@ -17,8 +16,6 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 interface BookingModalProps {
   children?: React.ReactNode;
   autoOpen?: boolean;
-  externalOpen?: boolean;
-  onExternalOpenChange?: (open: boolean) => void;
 }
 
 const services = [
@@ -41,9 +38,9 @@ const services = [
   { id: "other", label: "Other" },
 ];
 
-const BookingModal = ({ children, autoOpen = false, externalOpen, onExternalOpenChange }: BookingModalProps) => {
+const BookingModal = ({ children, autoOpen = false }: BookingModalProps) => {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
-  const [internalOpen, setInternalOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -51,87 +48,22 @@ const BookingModal = ({ children, autoOpen = false, externalOpen, onExternalOpen
     time: "",
   });
 
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  // Use external control if provided, otherwise internal state
-  const isControlled = externalOpen !== undefined;
-  const open = isControlled ? externalOpen : internalOpen;
-
   // validation state for phone number (must be exactly 10 digits)
   const [phoneError, setPhoneError] = useState<string | null>(null);
   const isPhoneValid = /^\d{10}$/.test(formData.phone);
-
-  // Handle opening with history state
-  const handleOpen = useCallback(() => {
-    // Push a new history entry when opening
-    window.history.pushState({ bookingModalOpen: true }, "", location.pathname + "?booking=open");
-    if (isControlled && onExternalOpenChange) {
-      onExternalOpenChange(true);
-    } else {
-      setInternalOpen(true);
-    }
-  }, [isControlled, onExternalOpenChange, location.pathname]);
-
-  // Handle closing (both from X button and back button)
-  const handleClose = useCallback(() => {
-    if (isControlled && onExternalOpenChange) {
-      onExternalOpenChange(false);
-    } else {
-      setInternalOpen(false);
-    }
-  }, [isControlled, onExternalOpenChange]);
-
-  // Handle dialog open change
-  const handleOpenChange = useCallback((newOpen: boolean) => {
-    if (newOpen) {
-      handleOpen();
-    } else {
-      // When closing via X button, go back in history
-      if (window.history.state?.bookingModalOpen) {
-        navigate(-1);
-      }
-      handleClose();
-    }
-  }, [handleOpen, handleClose, navigate]);
-
-  // Listen for popstate (back button)
-  useEffect(() => {
-    const handlePopState = (event: PopStateEvent) => {
-      // If we're going back and modal is open, close it
-      if (open && !event.state?.bookingModalOpen) {
-        handleClose();
-      }
-    };
-
-    window.addEventListener("popstate", handlePopState);
-    return () => window.removeEventListener("popstate", handlePopState);
-  }, [open, handleClose]);
-
-  // Check URL on mount/location change for ?booking=open
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    if (params.get("booking") === "open" && !open) {
-      if (isControlled && onExternalOpenChange) {
-        onExternalOpenChange(true);
-      } else {
-        setInternalOpen(true);
-      }
-    }
-  }, [location.search]);
 
   useEffect(() => {
     if (autoOpen) {
       const hasSeenPopup = sessionStorage.getItem("bookingPopupSeen");
       if (!hasSeenPopup) {
         const timer = setTimeout(() => {
-          handleOpen();
+          setOpen(true);
           sessionStorage.setItem("bookingPopupSeen", "true");
         }, 1500);
         return () => clearTimeout(timer);
       }
     }
-  }, [autoOpen, handleOpen]);
+  }, [autoOpen]);
 
   const toggleService = (serviceId: string) => {
     setSelectedServices((prev) =>
@@ -163,7 +95,7 @@ Please confirm my booking. Thank you!`;
   };
 
   return (
-    <Dialog open={open} onOpenChange={handleOpenChange}>
+    <Dialog open={open} onOpenChange={setOpen}>
       {children && <DialogTrigger asChild>{children}</DialogTrigger>}
       <DialogContent className="sm:max-w-md max-h-[90vh] overflow-y-auto">
         <DialogHeader>

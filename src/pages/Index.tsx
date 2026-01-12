@@ -45,12 +45,12 @@ const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-in">
-            <Button asChild size="lg" className="text-base px-8">
-              <Link to="/contact#book-appointment">
+            <BookingModal>
+              <Button size="lg" className="text-base px-8">
                 <Sparkles className="mr-2 h-5 w-5" />
                 Book Appointment
-              </Link>
-            </Button>
+              </Button>
+            </BookingModal>
             <Button asChild variant="outline" size="lg" className="text-base px-8">
               <Link to="/services">
                 View Services
