@@ -177,21 +177,21 @@ const BeforeAfterSection = () => {
 const TestimonialsSection = () => {
   const testimonials = [
     {
-      name: "Priya Sharma",
+      name: "Komal Yadav",
       service: "Bridal Makeup",
-      text: "Amazing bridal makeup! Priyanka made me look absolutely stunning on my wedding day. Highly recommend!",
+      text: "very professional service and i had a great experience",
       rating: 5,
     },
     {
-      name: "Neha Gupta",
-      service: "Facial Treatment",
-      text: "The Korean Glass facial was incredible. My skin felt so fresh and glowing. Will definitely come back!",
-      rating: 5,
-    },
-    {
-      name: "Anjali Verma",
+      name: "Neha Sharma",
       service: "Hair Treatment",
-      text: "Got keratin treatment done here. Professional service and amazing results. My hair has never looked better!",
+      text: "Got Hair Smoothing treatment done here. Professional service and amazing results. My hair has never looked better!",
+      rating: 5,
+    },
+    {
+      name: "Mahi Chauhan",
+      service: "Facial Treatment",
+      text: "The sevice is very nice and staff behaviour is too good.. I had a great experience with the facial treatment. My skin feels rejuvenated!",
       rating: 5,
     },
   ];
