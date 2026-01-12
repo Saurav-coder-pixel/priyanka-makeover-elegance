@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Sparkles, Heart, Scissors, Leaf, Hand, Footprints } from "lucide-react";
+import { Sparkles, Heart, Scissors, Leaf, Hand, Footprints, Home } from "lucide-react";
 
 const servicesData = [
   {
@@ -221,6 +221,34 @@ const Services = () => {
                   onClick={() => handleBookNow("Custom Package")}
                 >
                   Contact for a Custom Package
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="overflow-hidden">
+              <CardHeader className="bg-secondary/30">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                    <Home className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-xl text-primary">Home Services</CardTitle>
+                    <CardDescription>On-site services for large bridal or group bookings</CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="pt-6">
+                <p className="text-muted-foreground mb-4">
+                  We provide professional home services for large bridal parties or group bookings. Our team will arrive with all necessary equipment to deliver salon-quality services at your venue.
+                </p>
+                <p className="text-xs italic text-muted-foreground mb-4">
+                  Terms: Home services are available for large bridal or group bookings.
+                </p>
+                <Button
+                  className="w-full mt-4"
+                  onClick={() => handleBookNow("Home Services")}
+                >
+                  Request Home Service
                 </Button>
               </CardContent>
             </Card>
