@@ -179,7 +179,7 @@ const TestimonialsSection = () => {
     {
       name: "Komal Yadav",
       service: "Bridal Makeup",
-      text: "very professional service and i had a great experience",
+      text: "Very professional service and i had a great experience",
       rating: 5,
     },
     {
