@@ -82,6 +82,8 @@ const Contact = () => {
     "Pedicure",
     "Nail Art",
     "Threading",
+    "Home Service",
+    "Other",
   ];
 
   const toggleService = (service: string) => {
