@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Checkbox } from "@/components/ui/checkbox";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { Phone, MapPin, Clock, Instagram, MessageCircle, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Phone, MapPin, Clock, Instagram, MessageCircle, X, ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
 
 // Salon images
 import salonStorefront from "@/assets/salon/storefront.jpg";
@@ -31,11 +31,14 @@ const Contact = () => {
     services: [] as string[],
     date: "",
     time: "",
+    otherService: "",
   });
   // phone validation state (must be exactly 10 digits)
   const [phoneError, setPhoneError] = useState<string | null>(null);
   const isPhoneValid = /^\d{10}$/.test(formData.phone);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const servicesRef = useRef<HTMLDivElement | null>(null);
 
   // scroll-to-booking refs
   const bookingRef = useRef<HTMLDivElement | null>(null);
@@ -49,6 +52,25 @@ const Contact = () => {
       if (firstInput) (firstInput as HTMLInputElement).focus();
     }
   }, [location]);
+
+  // Close services dropdown on outside click or Escape
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (servicesRef.current && !servicesRef.current.contains(e.target as Node)) {
+        setServicesOpen(false);
+      }
+    }
+    function handleKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') setServicesOpen(false);
+    }
+    document.addEventListener('mousedown', handleClick);
+    document.addEventListener('keydown', handleKey);
+    return () => {
+      document.removeEventListener('mousedown', handleClick);
+      document.removeEventListener('keydown', handleKey);
+    };
+  }, []);
+
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const openLightbox = (index: number) => {
@@ -87,12 +109,15 @@ const Contact = () => {
   ];
 
   const toggleService = (service: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      services: prev.services.includes(service)
-        ? prev.services.filter((s) => s !== service)
-        : [...prev.services, service],
-    }));
+    setFormData((prev) => {
+      const has = prev.services.includes(service);
+      const services = has ? prev.services.filter((s) => s !== service) : [...prev.services, service];
+      return {
+        ...prev,
+        services,
+        otherService: has && service === "Other" ? "" : prev.otherService,
+      };
+    });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -101,9 +126,11 @@ const Contact = () => {
       setPhoneError('Phone number must be exactly 10 digits');
       return;
     }
-    const selectedServices = formData.services.length > 0 
-      ? formData.services.join(", ") 
-      : "Not specified";
+    let selectedServices = "Not specified";
+    if (formData.services.length > 0) {
+      const list = formData.services.map((s) => (s === "Other" ? (formData.otherService || "Other") : s));
+      selectedServices = list.join(", ");
+    }
     
     const message = `Hi! I would like to book an appointment at Priyanka Makeover.
 
@@ -283,30 +310,72 @@ Please confirm my booking. Thank you!`;
                       )}
                     </div>
 
-                    <div className="space-y-2">
-                      <Label>Select Services</Label>
-                      <ScrollArea className="h-40 rounded-lg border border-border p-3 bg-background">
-                        <div className="grid grid-cols-2 gap-2">
+                    <div className="space-y-2 relative" ref={servicesRef}>
+                      <Label htmlFor="services">Select Services</Label>
+
+                      <button
+                        type="button"
+                        id="services"
+                        aria-haspopup="listbox"
+                        aria-expanded={servicesOpen}
+                        onClick={() => setServicesOpen((s) => !s)}
+                        className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm focus:outline-none"
+                      >
+                        <div className="flex-1 min-w-0 flex items-center gap-2 flex-wrap">
+                          {formData.services.length === 0 ? (
+                            <span className="text-muted-foreground">Select services</span>
+                          ) : (
+                            formData.services.map((s) => (
+                              <span key={s} className="inline-flex items-center gap-2 px-2 py-1 rounded bg-muted text-muted-foreground text-xs">
+                                <span className="truncate max-w-[10rem]">{s}</span>
+                                <button
+                                  type="button"
+                                  aria-label={`Remove ${s}`}
+                                  onClick={(e) => { e.stopPropagation(); toggleService(s); }}
+                                  className="inline-flex h-4 w-4 items-center justify-center rounded-full hover:bg-muted/50"
+                                >
+                                  ×
+                                </button>
+                              </span>
+                            ))
+                          )}
+                        </div>
+                        <ChevronDown className={`ml-3 h-4 w-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
+                      </button>
+
+                      <div
+                        role="listbox"
+                        aria-multiselectable
+                        className={`absolute left-0 right-0 z-50 mt-1 rounded-md border border-border bg-background shadow-lg ${servicesOpen ? '' : 'hidden'}`}
+                      >
+                        <div className="max-h-40 overflow-auto p-2">
                           {services.map((service) => (
-                            <div key={service} className="flex items-center space-x-2">
+                            <label key={service} className="flex items-center space-x-2 p-2 rounded hover:bg-accent cursor-pointer">
                               <Checkbox
                                 id={`contact-${service}`}
                                 checked={formData.services.includes(service)}
                                 onCheckedChange={() => toggleService(service)}
                               />
-                              <Label
-                                htmlFor={`contact-${service}`}
-                                className="text-sm cursor-pointer font-normal"
-                              >
-                                {service}
-                              </Label>
-                            </div>
+                              <span className="text-sm">{service}</span>
+                            </label>
                           ))}
                         </div>
-                      </ScrollArea>
+                      </div>
+
+                      {formData.services.includes("Other") && (
+                        <div className="mt-2">
+                          <Input
+                            id="other-service"
+                            placeholder="Describe the other service (e.g., Normal Makeup)"
+                            value={formData.otherService}
+                            onChange={(e) => setFormData({ ...formData, otherService: e.target.value })}
+                          />
+                        </div>
+                      )}
+
                       {formData.services.length > 0 && (
-                        <p className="text-xs text-muted-foreground">
-                          Selected: {formData.services.join(", ")}
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Selected: {formData.services.map((s) => (s === "Other" ? (formData.otherService || "Other") : s)).join(", ")}
                         </p>
                       )}
                     </div>
