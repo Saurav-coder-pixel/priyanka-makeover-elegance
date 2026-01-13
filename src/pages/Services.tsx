@@ -220,7 +220,7 @@ const Services = () => {
                   className="w-full mt-4"
                   onClick={() => handleBookNow("Custom Package")}
                 >
-                  Contact for a Custom Package
+                  Book Custom Package
                 </Button>
               </CardContent>
             </Card>
@@ -248,7 +248,7 @@ const Services = () => {
                   className="w-full mt-4"
                   onClick={() => handleBookNow("Home Services")}
                 >
-                  Request Home Service
+                  Book Home Service
                 </Button>
               </CardContent>
             </Card>

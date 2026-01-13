@@ -255,9 +255,10 @@ Please confirm my booking. Thank you!`;
                         id="phone"
                         type="tel"
                         inputMode="numeric"
-                        pattern="\\d{10}"
                         maxLength={10}
                         placeholder="Enter your 10-digit phone number"
+                        aria-invalid={!!phoneError}
+                        title="Enter exactly 10 digits, e.g. 9876543210"
                         value={formData.phone}
                         onChange={(e) => {
                           const digits = e.target.value.replace(/\D/g, '').slice(0, 10);
