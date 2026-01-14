@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Heart, Scissors, Leaf } from "lucide-react";
@@ -129,11 +130,17 @@ const ServiceHighlights = () => {
 };
 
 const BeforeAfterSection = () => {
+  const [activeOverlay, setActiveOverlay] = useState<number | null>(null);
+  
   const transformations = [
     { id: 1, image: bridal1, title: "Beautiful Bride", service: "Bridal Makeup" },
     { id: 2, image: bridal2, title: "Beautiful Bride", service: "Bridal Makeup" },
     { id: 3, image: bridal3, title: "Beautiful Bride", service: "Bridal Makeup" },
   ];
+
+  const handleTap = (id: number) => {
+    setActiveOverlay(prev => prev === id ? null : id);
+  };
 
   return (
     <section className="py-20 bg-secondary/30">
@@ -149,14 +156,35 @@ const BeforeAfterSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {transformations.map((item) => (
-            <div key={item.id} className="relative overflow-hidden rounded-2xl aspect-[4/5] bg-muted group">
+            <div 
+              key={item.id} 
+              className="relative overflow-hidden rounded-2xl aspect-[4/5] bg-muted group cursor-pointer"
+              onClick={() => handleTap(item.id)}
+            >
               <img 
                 src={item.image} 
                 alt={item.title} 
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="absolute bottom-4 left-4 right-4 text-primary-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              {/* Mobile tap overlay - toggle on/off */}
+              <div 
+                className={`absolute inset-0 bg-primary/40 transition-opacity duration-300 md:hidden ${
+                  activeOverlay === item.id ? 'opacity-100' : 'opacity-0'
+                }`} 
+              />
+              {/* Desktop hover overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block" />
+              {/* Mobile text - shows with tap */}
+              <div 
+                className={`absolute bottom-4 left-4 right-4 text-primary-foreground transition-opacity duration-300 md:hidden ${
+                  activeOverlay === item.id ? 'opacity-100' : 'opacity-0'
+                }`}
+              >
+                <p className="font-medium drop-shadow-lg">{item.title}</p>
+                <p className="text-sm opacity-90 drop-shadow-lg">{item.service}</p>
+              </div>
+              {/* Desktop text - shows on hover */}
+              <div className="absolute bottom-4 left-4 right-4 text-primary-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block">
                 <p className="font-medium">{item.title}</p>
                 <p className="text-sm opacity-80">{item.service}</p>
               </div>
