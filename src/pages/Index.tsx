@@ -10,6 +10,13 @@ import bridal3 from "@/assets/transformations/bridal-3.png";
 const HeroSection = () => {
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-secondary via-background to-accent/30 overflow-hidden">
+      <img
+        src="/bridal.png"
+        alt="Priyanka Makeover - Premium Bridal Makeup in Manesar Gurugram"
+        width="1200"
+        height="630"
+        style={{ position: 'absolute', width: '1px', height: '1px', opacity: 0, pointerEvents: 'none' }}
+      />
       {/* Decorative elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-primary/20 blur-3xl" />
