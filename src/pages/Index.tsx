@@ -507,7 +507,7 @@ const ServiceHighlights = () => {
           {services.map((service, index) => (
             <Link
               key={index}
-              to={`/prices?tab=${service.priceTab}`}
+              to="/services"
               className="group p-6 bg-card rounded-2xl border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 cursor-pointer"
             >
               <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
