@@ -45,6 +45,7 @@ function useCounter(target: number, suffix = "", decimals = 0) {
 // ── Hero ──────────────────────────────────────────────────────────────
 const HeroSection = () => (
   <section
+    className="hero-section"
     style={{
       position: "relative",
       minHeight: "100vh",
@@ -77,7 +78,7 @@ const HeroSection = () => (
           position: "absolute",
           inset: 0,
           background:
-            "linear-gradient(100deg, rgba(36,24,32,0.75) 0%, rgba(36,24,32,0.38) 50%, rgba(36,24,32,0.12) 100%)",
+            "linear-gradient(100deg, rgba(36,24,32,0.75) 0%, rgba(36,24,32,0.38) 50%, rgba(36,24,32,0.12) 100%), linear-gradient(180deg, rgba(36,24,32,0.75) 0%, transparent 22%)",
         }}
       />
     </div>
@@ -100,6 +101,7 @@ const HeroSection = () => (
           Beauty Salon · Est. 2015
         </span>
         <h1
+          className="hero-title"
           style={{
             fontFamily: "var(--pm-serif)",
             fontSize: "clamp(2.4rem, 5.2vw, 4.4rem)",
@@ -126,7 +128,7 @@ const HeroSection = () => (
           complete beauty services in Manesar, Gurugram. Your beauty is our
           passion.
         </p>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", alignItems: "center" }}>
+        <div className="hero-buttons" style={{ display: "flex", flexWrap: "wrap", gap: "1rem", alignItems: "center" }}>
           <Link
             to="/contact#book-appointment"
             className="pm-btn pm-btn-primary"
@@ -213,8 +215,14 @@ const HeroSection = () => (
     </div>
 
     <style>{`
+      .hero-section { min-height: 100svh !important; }
       @media (max-width: 1199px) { .hero-card-hide { display: none; } }
-      @media (max-width: 767px) { section { min-height: auto !important; padding: 7rem 0 4rem !important; } }
+      @media (max-width: 767px) { 
+        .hero-section { padding: 7rem 0 7rem !important; } 
+        .hero-title { font-size: 2.8rem !important; line-height: 1.1 !important; }
+        .hero-buttons { flex-direction: column; align-items: stretch; }
+        .hero-buttons .pm-btn { width: 100%; justify-content: center; }
+      }
     `}</style>
   </section>
 );
