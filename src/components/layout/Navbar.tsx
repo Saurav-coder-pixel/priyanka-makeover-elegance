@@ -1,115 +1,245 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, CalendarDays, MapPin, Clock, Instagram, Facebook } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { CalendarDays, Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
-  { name: "Services", path: "/services", hasDropdown: true },
+  { name: "Services", path: "/services" },
   { name: "Gallery", path: "/gallery" },
   { name: "Contact", path: "/contact" },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname === path;
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 30);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [isOpen]);
+
   return (
-    <header className="sticky top-0 z-50">
-
-      {/* Main Navbar */}
-      <nav className="bg-white/97 backdrop-blur supports-[backdrop-filter]:bg-white/90 border-b border-pink-100 shadow-sm">
-        <div className="container mx-auto px-4 py-3">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <Link to="/" className="flex items-center gap-2.5">
-              <img src={logo} alt="Priyanka Makeover Logo" className="h-12 w-12 rounded-full object-cover border-2 border-primary/20" />
-              <div>
-                <h1 className="text-base sm:text-lg font-serif font-bold text-[#6b1a33]">Priyanka Makeover</h1>
-                <p className="text-[10px] sm:text-xs text-[#9a3555]/70">Enhancing Your Natural Beauty</p>
-              </div>
-            </Link>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-6">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className={`text-sm font-medium transition-colors hover:text-[#6b1a33] flex items-center gap-0.5 ${
-                    isActive(link.path)
-                      ? "text-[#6b1a33] border-b-2 border-[#6b1a33] pb-0.5"
-                      : "text-gray-600"
-                  }`}
-                >
-                  {link.name}
-                  {link.hasDropdown && (
-                    <svg className="h-3 w-3 ml-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  )}
-                </Link>
-              ))}
+    <>
+      <header
+        style={{
+          position: "fixed",
+          top: 0, left: 0, right: 0,
+          zIndex: 1030,
+          padding: scrolled ? "0.85rem 0" : "1.4rem 0",
+          background: scrolled ? "rgba(250,245,242,0.94)" : "transparent",
+          backdropFilter: scrolled ? "blur(14px)" : "none",
+          WebkitBackdropFilter: scrolled ? "blur(14px)" : "none",
+          boxShadow: scrolled ? "0 1px 0 rgba(42,29,37,0.07), 0 12px 30px -24px rgba(58,40,48,0.5)" : "none",
+          transition: "background 0.35s cubic-bezier(0.22,0.61,0.36,1), padding 0.35s cubic-bezier(0.22,0.61,0.36,1), box-shadow 0.35s cubic-bezier(0.22,0.61,0.36,1)",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1280px",
+            margin: "0 auto",
+            padding: "0 1.5rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          {/* Brand */}
+          <Link
+            to="/"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.85rem",
+              textDecoration: "none",
+            }}
+          >
+            <img
+              src={logo}
+              alt="Priyanka Makeover Logo"
+              style={{
+                width: "44px",
+                height: "44px",
+                borderRadius: "50%",
+                objectFit: "cover",
+                border: `2px solid ${scrolled ? "rgba(200, 169, 106, 0.55)" : "rgba(255, 255, 255, 0.45)"}`,
+                boxShadow: "0 2px 10px rgba(0,0,0,0.15)",
+                flexShrink: 0,
+                transition: "border-color 0.3s",
+              }}
+            />
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+              <span
+                style={{
+                  fontFamily: "var(--pm-serif)",
+                  fontSize: "1.45rem",
+                  fontWeight: 600,
+                  letterSpacing: "0.02em",
+                  color: scrolled ? "var(--pm-ink)" : "#fff",
+                  lineHeight: 1.1,
+                  transition: "color 0.3s",
+                }}
+              >
+                Priyanka<span style={{ color: "var(--pm-rose)" }}>.</span>
+              </span>
+              <small
+                style={{
+                  fontFamily: "var(--pm-sans)",
+                  fontSize: "0.55rem",
+                  letterSpacing: "0.38em",
+                  textTransform: "uppercase",
+                  color: scrolled ? "var(--pm-mauve)" : "rgba(255,255,255,0.75)",
+                  marginTop: "0.2rem",
+                  fontWeight: 500,
+                  display: "block",
+                  transition: "color 0.3s",
+                }}
+              >
+                Makeover
+              </small>
             </div>
+          </Link>
 
-            {/* CTA Button */}
-            <div className="hidden md:flex items-center gap-3">
-              <Link to="/contact#book-appointment" className="inline-block">
-                <Button
-                  size="sm"
-                  className="flex items-center gap-2 bg-[#6b1a33] hover:bg-[#531428] text-white font-medium px-5 py-2 rounded-md shadow-md transition-all duration-200 hover:shadow-lg"
-                >
-                  <CalendarDays className="h-4 w-4" />
-                  Book Appointment
-                </Button>
+          {/* Desktop nav */}
+          <nav aria-label="Primary" style={{ display: "flex", alignItems: "center", gap: "2.1rem" }}>
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                style={{
+                  fontFamily: "var(--pm-sans)",
+                  fontWeight: 400,
+                  fontSize: "0.82rem",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  color: scrolled
+                    ? isActive(link.path) ? "var(--pm-rose-deep)" : "var(--pm-ink)"
+                    : isActive(link.path) ? "var(--pm-gold-soft)" : "rgba(255,255,255,0.9)",
+                  position: "relative",
+                  padding: "0.25rem 0",
+                  textDecoration: "none",
+                  transition: "color 0.25s",
+                }}
+                className="nav-link-hover"
+              >
+                {link.name}
               </Link>
-            </div>
+            ))}
+          </nav>
 
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden p-2 text-[#6b1a33]"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle menu"
+          {/* CTA + hamburger */}
+          <div style={{ display: "flex", alignItems: "center", gap: "1.25rem" }}>
+            <Link
+              to="/contact#book-appointment"
+              className="pm-btn pm-btn-sm pm-btn-primary hidden-mobile"
+              style={{ fontFamily: "var(--pm-sans)", textDecoration: "none" }}
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              <CalendarDays size={14} />
+              Book Now
+            </Link>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+              style={{
+                display: "none",
+                width: "46px",
+                height: "46px",
+                border: `1px solid ${scrolled ? "var(--pm-line)" : "rgba(255,255,255,0.4)"}`,
+                borderRadius: "50%",
+                background: "transparent",
+                cursor: "pointer",
+                alignItems: "center",
+                justifyContent: "center",
+                color: scrolled ? "var(--pm-ink)" : "#fff",
+                transition: "border-color 0.3s",
+              }}
+              id="mobile-nav-toggle"
+            >
+              {isOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
           </div>
-
-          {/* Mobile Navigation */}
-          {isOpen && (
-            <div className="md:hidden mt-4 pb-4 border-t border-pink-100 pt-4 animate-fade-in">
-              <div className="flex flex-col gap-3">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    onClick={() => setIsOpen(false)}
-                    className={`text-sm font-medium py-2 transition-colors hover:text-[#6b1a33] ${
-                      isActive(link.path) ? "text-[#6b1a33]" : "text-gray-600"
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-                <Link to="/contact#book-appointment" onClick={() => setIsOpen(false)}>
-                  <Button
-                    size="sm"
-                    className="mt-2 w-full flex items-center justify-center gap-2 bg-[#6b1a33] hover:bg-[#531428] text-white"
-                  >
-                    <CalendarDays className="h-4 w-4" />
-                    Book Appointment
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          )}
         </div>
-      </nav>
-    </header>
+
+        {/* Inline nav link hover styles */}
+        <style>{`
+          .nav-link-hover::after {
+            content: "";
+            position: absolute;
+            left: 0; bottom: -2px;
+            width: 0; height: 1px;
+            background: var(--pm-rose);
+            transition: width 0.28s cubic-bezier(0.22,0.61,0.36,1);
+          }
+          .nav-link-hover:hover::after,
+          .nav-link-hover.active::after { width: 100%; }
+          @media (max-width: 768px) {
+            nav[aria-label="Primary"] { display: none !important; }
+            .hidden-mobile { display: none !important; }
+            #mobile-nav-toggle { display: inline-flex !important; }
+          }
+        `}</style>
+      </header>
+
+      {/* Mobile drawer */}
+      <div
+        style={{
+          position: "fixed",
+          inset: 0,
+          background: "var(--pm-cream)",
+          zIndex: 1029,
+          padding: "6.5rem 2rem 2rem",
+          transform: isOpen ? "translateX(0)" : "translateX(100%)",
+          transition: "transform 0.4s cubic-bezier(0.22,0.61,0.36,1)",
+          display: "flex",
+          flexDirection: "column",
+          overflowY: "auto",
+        }}
+      >
+        <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
+          {navLinks.map((link) => (
+            <li key={link.path} style={{ borderBottom: "1px solid var(--pm-line-soft)" }}>
+              <Link
+                to={link.path}
+                style={{
+                  display: "block",
+                  fontFamily: "var(--pm-serif)",
+                  fontSize: "1.8rem",
+                  padding: "1rem 0",
+                  color: isActive(link.path) ? "var(--pm-rose-deep)" : "var(--pm-ink)",
+                  textDecoration: "none",
+                  transition: "color 0.25s",
+                }}
+              >
+                {link.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <Link
+          to="/contact#book-appointment"
+          className="pm-btn pm-btn-primary pm-btn-block"
+          style={{ marginTop: "2rem", textDecoration: "none", justifyContent: "center" }}
+        >
+          <CalendarDays size={16} />
+          Book an Appointment
+        </Link>
+      </div>
+    </>
   );
 };
 
