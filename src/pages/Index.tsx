@@ -4,6 +4,7 @@ import heroPortrait from "@/assets/hero-portrait.png";
 import bridal1 from "@/assets/transformations/bridal-1.png";
 import bridal2 from "@/assets/transformations/bridal-2.png";
 import bridal3 from "@/assets/transformations/bridal-3.png";
+import OffersPopup from "@/components/OffersPopup";
 
 // ── Reveal hook ───────────────────────────────────────────────────────
 function useReveal() {
@@ -612,13 +613,12 @@ const VisitSection = () => (
           <h2 className="pm-h2">Come and see us</h2>
           <p className="pm-lead">
             Located in Manesar, Gurugram — in Computer Gali, near NSG Campus.
-            Ample parking available, easily accessible from NH-48.
+            Easily accessible from NH-48.
           </p>
 
           <ul className="pm-hours-list" style={{ marginTop: "2rem" }}>
             {[
-              { day: "Monday – Saturday", time: "10:00 AM – 8:00 PM" },
-              { day: "Sunday", time: "10:00 AM – 6:00 PM" },
+              { day: "Monday – Sunday", time: "10:00 AM – 8:00 PM" },
             ].map(({ day, time }) => (
               <li key={day}>
                 <span className="pm-hours-day">{day}</span>
@@ -734,13 +734,43 @@ const CTASection = () => (
   </section>
 );
 
+// ── Seasonal Offers Banner ─────────────────────────────────────────────
+const SeasonalOffersBanner = () => (
+  <section className="pm-section-sm bg-[var(--pm-cream-2)] border-t border-b border-[var(--pm-line-soft)]" id="seasonal-offers">
+    <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 1.5rem" }}>
+      <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-white p-6 md:p-8 rounded-2xl border border-[var(--pm-gold-soft)] shadow-[0_4px_20px_-10px_rgba(200,169,106,0.3)]">
+        <div className="flex-1 text-center md:text-left">
+          <span className="pm-eyebrow !mb-2" style={{ justifyContent: "center" }}>Festive Season Special</span>
+          <h3 className="font-serif text-2xl md:text-3xl text-[var(--pm-ink)] mb-2">
+            Exclusive Wedding & Beauty Offers
+          </h3>
+          <p className="text-[var(--pm-mauve)] max-w-xl mx-auto md:mx-0">
+            Get ready for the season with our specially curated bridal and beauty packages. Limited time discounts on premium services.
+          </p>
+        </div>
+        <div className="shrink-0 w-full md:w-auto">
+          <Link 
+            to="/offers" 
+            className="pm-btn pm-btn-gold pm-btn-block md:inline-flex md:w-auto"
+            style={{ textDecoration: "none" }}
+          >
+            View All Offers &rarr;
+          </Link>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
 // ── Page ──────────────────────────────────────────────────────────────
 const Index = () => {
   useReveal();
   return (
     <>
+      <OffersPopup />
       <HeroSection />
       <ServicesSection />
+      <SeasonalOffersBanner />
       <GallerySection />
       <WhySection />
       <StatsBar />
