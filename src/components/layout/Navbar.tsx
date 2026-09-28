@@ -17,6 +17,7 @@ const Navbar = () => {
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname === path;
+  const isSolid = scrolled || isOpen;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -41,9 +42,9 @@ const Navbar = () => {
           top: 0, left: 0, right: 0,
           zIndex: 1030,
           padding: scrolled ? "0.85rem 0" : "1.4rem 0",
-          background: scrolled ? "rgba(250,245,242,0.94)" : "transparent",
-          backdropFilter: scrolled ? "blur(14px)" : "none",
-          WebkitBackdropFilter: scrolled ? "blur(14px)" : "none",
+          background: isSolid ? "rgba(250,245,242,0.94)" : "transparent",
+          backdropFilter: isSolid ? "blur(14px)" : "none",
+          WebkitBackdropFilter: isSolid ? "blur(14px)" : "none",
           boxShadow: scrolled ? "0 1px 0 rgba(42,29,37,0.07), 0 12px 30px -24px rgba(58,40,48,0.5)" : "none",
           transition: "background 0.35s cubic-bezier(0.22,0.61,0.36,1), padding 0.35s cubic-bezier(0.22,0.61,0.36,1), box-shadow 0.35s cubic-bezier(0.22,0.61,0.36,1)",
         }}
@@ -76,7 +77,7 @@ const Navbar = () => {
                 height: "44px",
                 borderRadius: "50%",
                 objectFit: "cover",
-                border: `2px solid ${scrolled ? "rgba(200, 169, 106, 0.55)" : "rgba(255, 255, 255, 0.45)"}`,
+                border: `2px solid ${isSolid ? "rgba(200, 169, 106, 0.55)" : "rgba(255, 255, 255, 0.45)"}`,
                 boxShadow: "0 2px 10px rgba(0,0,0,0.15)",
                 flexShrink: 0,
                 transition: "border-color 0.3s",
@@ -89,7 +90,7 @@ const Navbar = () => {
                   fontSize: "1.45rem",
                   fontWeight: 600,
                   letterSpacing: "0.02em",
-                  color: scrolled ? "var(--pm-ink)" : "#fff",
+                  color: isSolid ? "var(--pm-ink)" : "#fff",
                   lineHeight: 1.1,
                   transition: "color 0.3s",
                 }}
@@ -102,7 +103,7 @@ const Navbar = () => {
                   fontSize: "0.55rem",
                   letterSpacing: "0.38em",
                   textTransform: "uppercase",
-                  color: scrolled ? "var(--pm-mauve)" : "rgba(255,255,255,0.75)",
+                  color: isSolid ? "var(--pm-mauve)" : "rgba(255,255,255,0.75)",
                   marginTop: "0.2rem",
                   fontWeight: 500,
                   display: "block",
@@ -126,7 +127,7 @@ const Navbar = () => {
                   fontSize: "0.82rem",
                   letterSpacing: "0.1em",
                   textTransform: "uppercase",
-                  color: scrolled
+                  color: isSolid
                     ? isActive(link.path) ? "var(--pm-rose-deep)" : "var(--pm-ink)"
                     : isActive(link.path) ? "var(--pm-gold-soft)" : "rgba(255,255,255,0.9)",
                   position: "relative",
@@ -159,13 +160,13 @@ const Navbar = () => {
                 display: "none",
                 width: "46px",
                 height: "46px",
-                border: `1px solid ${scrolled ? "var(--pm-line)" : "rgba(255,255,255,0.4)"}`,
+                border: `1px solid ${isSolid ? "var(--pm-line)" : "rgba(255,255,255,0.4)"}`,
                 borderRadius: "50%",
                 background: "transparent",
                 cursor: "pointer",
                 alignItems: "center",
                 justifyContent: "center",
-                color: scrolled ? "var(--pm-ink)" : "#fff",
+                color: isSolid ? "var(--pm-ink)" : "#fff",
                 transition: "border-color 0.3s",
               }}
               id="mobile-nav-toggle"
