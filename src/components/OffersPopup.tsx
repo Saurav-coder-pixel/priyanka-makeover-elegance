@@ -10,11 +10,26 @@ const OffersPopup = () => {
   const [showContactOptions, setShowContactOptions] = useState(false);
 
   useEffect(() => {
-    // Pick a random offer every time the page loads so the popup appears on refresh.
+    const navEntries = performance.getEntriesByType("navigation") as PerformanceNavigationTiming[];
+    const navType = navEntries[0]?.type ?? "navigate";
+    const isFreshPageLoad = navType === "navigate" || navType === "reload";
+    const wasAlreadyShownThisSession = sessionStorage.getItem("seasonalOfferPopupShown") === "true";
+
+    if (!isFreshPageLoad) {
+      setShouldRender(false);
+      setIsVisible(false);
+      return;
+    }
+
+    if (navType === "navigate" && wasAlreadyShownThisSession) {
+      return;
+    }
+
     const randomIndex = Math.floor(Math.random() * offersData.length);
     setSelectedOffer(offersData[randomIndex]);
 
     const timer = setTimeout(() => {
+      sessionStorage.setItem("seasonalOfferPopupShown", "true");
       setShouldRender(true);
       setTimeout(() => setIsVisible(true), 50);
     }, 2500);

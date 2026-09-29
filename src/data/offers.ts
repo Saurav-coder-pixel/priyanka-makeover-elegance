@@ -37,9 +37,9 @@ export const offersData: Offer[] = [
     discountPercentage: 26,
     services: [
       { title: "Bridal Makeup", description: "Flawless & timeless base" },
-      { title: "Basic Hairstyling", description: "Elegant traditional styles" },
+      { title: "Hairstyling", description: "Elegant traditional styles" },
       { title: "Draping", description: "Professional saree/lehenga draping" },
-      { title: "Basic Touch-up", description: "Final finishing touches" }
+      { title: "Touch-up", description: "Final finishing touches" }
     ],
     validity: "Valid till Dec 31, 2026",
     featured: false,
@@ -54,11 +54,10 @@ export const offersData: Offer[] = [
     discountedPrice: 18000,
     discountPercentage: 25,
     services: [
-      { title: "HD Bridal Makeup", description: "Camera-ready flawless finish" },
-      { title: "Advanced Hairstyling", description: "Sophisticated modern updos" },
-      { title: "Draping", description: "Perfect pleats & styling" },
+      { title: "Elegant Bridal", description: "All Services of Elegant Bridal" },
+      { title: "HD Makeup", description: "Camera-ready flawless finish" },
+      { title: "Jewelry Styling", description: "Elegant traditional styles" },
       { title: "Pre-Bridal Glow Facial", description: "Bright & radiant skin prep" },
-      { title: "Makeup Touch-up", description: "Long-lasting setting" }
     ],
     validity: "Valid till Dec 31, 2026",
     featured: false,
@@ -73,11 +72,10 @@ export const offersData: Offer[] = [
     discountedPrice: 21000,
     discountPercentage: 25,
     services: [
-      { title: "Luxury Bridal Makeup", description: "Premium international products" },
-      { title: "Premium Hairstyling", description: "Intricate & bespoke styles" },
-      { title: "Professional Draping", description: "Flawless designer draping" },
+      { title: "Signature Bridal", description: "All Services of Signature Bridal" },
       { title: "Advanced Skin Preparation", description: "Luxury hydrating treatments" },
-      { title: "Complete Bridal Styling", description: "Head-to-toe perfection" }
+      { title: "Complete Bridal Styling", description: "Head-to-toe perfection" },
+      { title: "Mehndi ", description: "Where tradition meets modern elegance" },
     ],
     validity: "Valid till Dec 31, 2026",
     featured: true,
