@@ -4,7 +4,6 @@ import heroPortrait from "@/assets/hero-portrait.png";
 import bridal1 from "@/assets/transformations/bridal-1.png";
 import bridal2 from "@/assets/transformations/bridal-2.png";
 import bridal3 from "@/assets/transformations/bridal-3.png";
-import OffersPopup from "@/components/OffersPopup";
 
 // ── Reveal hook ───────────────────────────────────────────────────────
 function useReveal() {
@@ -426,8 +425,8 @@ const WhySection = () => {
 const StatsBar = () => {
   const stats = [
     { target: 15, suffix: "+", label: "Years of expertise", decimals: 0 },
-    { target: 1500, suffix: "+", label: "Happy brides", decimals: 0 },
-    { target: 4.9, suffix: "", label: "Average rating", decimals: 1 },
+    { target: 1500, suffix: "+", label: "Happy Clients", decimals: 0 },
+    { target: 5, suffix: "", label: "Average rating", decimals: 1 },
     { target: 30, suffix: "+", label: "Beauty services", decimals: 0 },
   ];
   const counters = [
@@ -632,7 +631,14 @@ const VisitSection = () => (
               <span className="pm-ci">📍</span>
               <div>
                 <strong>Salon Location</strong>
-                Computer Gali, near NSG Campus, Sector 1B, Manesar, Gurugram 122051
+                <a
+                  href="https://maps.app.goo.gl/iXNcSGwJK7DcQ6VA8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "var(--pm-rose-deep)" }}
+                >
+                  Computer Gali, near NSG Campus, Sector 1B, Manesar, Gurugram 122051
+                </a>
               </div>
             </div>
             <div className="pm-contact-line">
@@ -767,7 +773,6 @@ const Index = () => {
   useReveal();
   return (
     <>
-      <OffersPopup />
       <HeroSection />
       <ServicesSection />
       <SeasonalOffersBanner />

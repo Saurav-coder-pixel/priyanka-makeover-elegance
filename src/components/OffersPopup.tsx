@@ -1,29 +1,40 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { X, CalendarDays, Sparkles } from "lucide-react";
+import { X, CalendarDays, Sparkles, Phone, MessageCircle } from "lucide-react";
 import { offersData, Offer } from "@/data/offers";
 
 const OffersPopup = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [shouldRender, setShouldRender] = useState(false);
   const [selectedOffer, setSelectedOffer] = useState<Offer | null>(null);
+  const [showContactOptions, setShowContactOptions] = useState(false);
 
   useEffect(() => {
-    const hasSeenPopup = sessionStorage.getItem("hasSeenOffersPopup");
-    
-    if (!hasSeenPopup) {
-      // Pick random offer
-      const randomIndex = Math.floor(Math.random() * offersData.length);
-      setSelectedOffer(offersData[randomIndex]);
+    const navEntries = performance.getEntriesByType("navigation") as PerformanceNavigationTiming[];
+    const navType = navEntries[0]?.type ?? "navigate";
+    const isFreshPageLoad = navType === "navigate" || navType === "reload";
+    const wasAlreadyShownThisSession = sessionStorage.getItem("seasonalOfferPopupShown") === "true";
 
-      const timer = setTimeout(() => {
-        setShouldRender(true);
-        setTimeout(() => setIsVisible(true), 50);
-        sessionStorage.setItem("hasSeenOffersPopup", "true");
-      }, 2500);
-      
-      return () => clearTimeout(timer);
+    if (!isFreshPageLoad) {
+      setShouldRender(false);
+      setIsVisible(false);
+      return;
     }
+
+    if (navType === "navigate" && wasAlreadyShownThisSession) {
+      return;
+    }
+
+    const randomIndex = Math.floor(Math.random() * offersData.length);
+    setSelectedOffer(offersData[randomIndex]);
+
+    const timer = setTimeout(() => {
+      sessionStorage.setItem("seasonalOfferPopupShown", "true");
+      setShouldRender(true);
+      setTimeout(() => setIsVisible(true), 50);
+    }, 2500);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const closePopup = () => {
@@ -138,14 +149,43 @@ const OffersPopup = () => {
           </div>
 
           {/* CTA */}
-          <Link 
-            to="/contact#book-appointment"
-            onClick={closePopup}
-            className="w-full bg-[#1a1c1d] hover:bg-black text-white rounded-full py-4 flex items-center justify-center gap-3 tracking-[0.2em] text-[0.75rem] transition-all duration-300 mb-4 shadow-md"
-            style={{ textDecoration: "none" }}
-          >
-            BOOK NOW <span className="transition-transform duration-300 hover:translate-x-1">→</span>
-          </Link>
+          {!showContactOptions ? (
+            <div className="flex gap-3 mb-4">
+              <button 
+                onClick={() => setShowContactOptions(true)}
+                className="flex-1 bg-[#1a1c1d] hover:bg-black text-white rounded-full py-4 flex items-center justify-center gap-3 tracking-[0.18em] text-[0.7rem] transition-all duration-300 shadow-md"
+              >
+                BOOK NOW <span className="transition-transform duration-300 hover:translate-x-1">→</span>
+              </button>
+              <Link
+                to="/offers"
+                onClick={closePopup}
+                className="flex-1 border border-[#d9c8b6] bg-[#f5efe8] text-[#2a1d25] hover:bg-[#efe5db] rounded-full py-4 flex items-center justify-center gap-2 tracking-[0.18em] text-[0.7rem] transition-all duration-300 shadow-sm"
+                style={{ textDecoration: "none" }}
+              >
+                MORE INFO
+              </Link>
+            </div>
+          ) : (
+            <div className="flex gap-3 mb-4">
+              <a 
+                href="tel:+919650061103"
+                onClick={closePopup}
+                className="flex-1 bg-[#1a1c1d] hover:bg-black text-white rounded-full py-3.5 flex items-center justify-center gap-2 tracking-widest text-[0.65rem] transition-all duration-300 shadow-md"
+              >
+                <Phone size={14} /> CALL
+              </a>
+              <a 
+                href={`https://wa.me/919650061103?text=${encodeURIComponent(`Hi, I would like to book the ${selectedOffer.title} offer.`)}`}
+                onClick={closePopup}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 bg-[#25D366] hover:bg-[#1ebd5a] text-white rounded-full py-3.5 flex items-center justify-center gap-2 tracking-widest text-[0.65rem] transition-all duration-300 shadow-md"
+              >
+                <MessageCircle size={14} /> WHATSAPP
+              </a>
+            </div>
+          )}
           
           <div className="text-center text-[0.65rem] text-gray-400 uppercase tracking-widest font-medium flex items-center justify-center gap-1.5">
             <CalendarDays size={12} className="opacity-70" /> {selectedOffer.validity}

@@ -160,14 +160,23 @@ const Offers = () => {
                             )}
                           </div>
 
-                          {/* Book Now Button */}
-                          <Link 
-                            to="/contact#book-appointment" 
-                            className="w-full bg-white/10 backdrop-blur-md border border-white/50 hover:bg-white/20 text-white rounded-full py-4 sm:py-5 flex items-center justify-center gap-3 tracking-[0.25em] text-[0.8rem] font-medium transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] mb-5"
-                            style={{ textDecoration: "none" }}
-                          >
-                            BOOK NOW <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                          </Link>
+                          {/* Book Now & More Info Buttons */}
+                          <div className="flex gap-3 mb-5">
+                            <Link 
+                              to="/contact#book-appointment" 
+                              className="flex-1 bg-white/10 backdrop-blur-md border border-white/50 hover:bg-white/20 text-white rounded-full py-4 sm:py-5 flex items-center justify-center gap-3 tracking-[0.2em] text-[0.72rem] font-medium transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+                              style={{ textDecoration: "none" }}
+                            >
+                              BOOK NOW <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                            </Link>
+                            <Link
+                              to="/offers"
+                              className="flex-1 bg-white/5 backdrop-blur-sm border border-white/30 hover:bg-white/10 text-white rounded-full py-4 sm:py-5 flex items-center justify-center gap-2 tracking-[0.2em] text-[0.72rem] font-medium transition-all duration-300"
+                              style={{ textDecoration: "none" }}
+                            >
+                              MORE INFO
+                            </Link>
+                          </div>
 
                           {/* Footer: Validity */}
                           <div className="flex justify-center items-center">
