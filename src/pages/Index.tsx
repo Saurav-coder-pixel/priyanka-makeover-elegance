@@ -65,7 +65,7 @@ const HeroSection = () => (
     >
       <img
         src={heroPortrait}
-        alt="Bridal makeup by Priyanka Makeover in Manesar"
+        alt="Bridal makeup by Priyanka Makeover in Gurgaon"
         fetchPriority="high"
         style={{
           width: "100%",
@@ -113,8 +113,8 @@ const HeroSection = () => (
             letterSpacing: "-0.01em",
           }}
         >
-          Beauty Parlour in Manesar, Gurugram{" "}
-          <span className="pm-serif-accent">for your signature.</span>
+          Where beauty becomes{" "}
+          <span className="pm-serif-accent">your signature.</span>
         </h1>
         <p
           style={{
