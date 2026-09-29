@@ -426,7 +426,7 @@ const WhySection = () => {
 const StatsBar = () => {
   const stats = [
     { target: 15, suffix: "+", label: "Years of expertise", decimals: 0 },
-    { target: 1500, suffix: "+", label: "Happy brides", decimals: 0 },
+    { target: 1500, suffix: "+", label: "Happy Clients", decimals: 0 },
     { target: 4.9, suffix: "", label: "Average rating", decimals: 1 },
     { target: 30, suffix: "+", label: "Beauty services", decimals: 0 },
   ];
