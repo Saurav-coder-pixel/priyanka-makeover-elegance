@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 
 const Footer = () => {
   return (
@@ -60,7 +60,7 @@ const Footer = () => {
                     lineHeight: 1.1,
                   }}
                 >
-                  Priyanka<span style={{ color: "var(--pm-rose)" }}>.</span>
+                  Priyanka
                 </div>
                 <small
                   style={{
@@ -180,10 +180,18 @@ const Footer = () => {
               Services
             </h5>
             <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
-              {["Bridal Makeup", "Party Makeup", "Facial & Skin Care", "Hair Styling", "Waxing & Threading", "Nail Art"].map((s) => (
-                <li key={s} style={{ marginBottom: "0.65rem" }}>
+              {[
+                { name: "Bridal Makeup", path: "/services#bridal-makeup" },
+                { name: "Party Makeup", path: "/services#party-makeup" },
+                { name: "Facial & Skin Care", path: "/services#facial-skincare" },
+                { name: "Hair Styling", path: "/services#hair-styling" },
+                { name: "Hair Treatments", path: "/services#hair-treatments" },
+                { name: "Waxing", path: "/services#waxing" },
+                { name: "Manicure & Pedicure", path: "/services#manicure-pedicure" },
+              ].map(({ name, path }) => (
+                <li key={path} style={{ marginBottom: "0.65rem" }}>
                   <Link
-                    to="/services"
+                    to={path}
                     style={{
                       color: "rgba(255,255,255,0.68)",
                       fontSize: "0.92rem",
@@ -193,7 +201,7 @@ const Footer = () => {
                     onMouseEnter={(e) => { e.currentTarget.style.color = "var(--pm-gold-soft)"; }}
                     onMouseLeave={(e) => { e.currentTarget.style.color = "rgba(255,255,255,0.68)"; }}
                   >
-                    {s}
+                    {name}
                   </Link>
                 </li>
               ))}
@@ -222,7 +230,7 @@ const Footer = () => {
             <div style={{ marginBottom: "0.8rem" }}>
               <div style={{ fontSize: "0.72rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--pm-mauve-soft)", marginBottom: "0.15rem" }}>Salon</div>
               <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.88rem", margin: 0, lineHeight: 1.5 }}>
-                Computer Gali, near NSG Campus,<br />Sector 1B, Manesar, Gurugram 122051
+                Computer Gali, near NSG Campus, Sector 1B, Manesar, Gurugram, Haryana 122051
               </p>
             </div>
             <div>
@@ -250,8 +258,8 @@ const Footer = () => {
             © {new Date().getFullYear()} Priyanka Makeover. All rights reserved.
           </p>
           <div style={{ display: "flex", gap: "1.5rem" }}>
-            <a href="#" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none", fontSize: "0.84rem" }}>Privacy Policy</a>
-            <a href="#" style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none", fontSize: "0.84rem" }}>Terms</a>
+            <span style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.84rem" }}>Privacy Policy</span>
+            <span style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.84rem" }}>Terms</span>
           </div>
         </div>
       </div>

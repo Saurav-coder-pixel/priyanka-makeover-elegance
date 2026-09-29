@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CalendarDays, Menu, X } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -97,7 +97,7 @@ const Navbar = () => {
                   transition: "color 0.3s",
                 }}
               >
-                Priyanka<span style={{ color: "var(--pm-rose)" }}>.</span>
+                Priyanka
               </span>
               <small
                 style={{

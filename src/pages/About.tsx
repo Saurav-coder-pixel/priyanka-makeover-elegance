@@ -1,7 +1,7 @@
 import { CheckCircle, Award, Shield, Heart } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import logo from "@/assets/logo.jpeg";
-import priyankaPortrait from "@/assets/owner.png";
+import logo from "@/assets/logo.webp";
+import priyankaPortrait from "@/assets/owner.webp";
 
 // ── Counter hook ─────────────────────────────────────────────────────
 function useCounter(target: number, suffix = "", decimals = 0) {

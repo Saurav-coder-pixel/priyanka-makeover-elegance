@@ -1,7 +1,7 @@
-import elegantImg from "@/assets/Elegent.png";
-import signatureImg from "@/assets/Luxury.png";
-import royalImg from "@/assets/Royal.png";
-import hairImg from "@/assets/HairSmoothing.png";
+import elegantImg from "@/assets/Elegent.webp";
+import signatureImg from "@/assets/Luxury.webp";
+import royalImg from "@/assets/Royal.webp";
+import hairImg from "@/assets/HairSmoothing.webp";
 
 export interface OfferService {
   title: string;

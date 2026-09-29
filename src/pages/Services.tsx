@@ -1,14 +1,15 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Sparkles, Heart, Scissors, Leaf, Hand, Footprints, Home } from "lucide-react";
 
 const servicesData = [
   {
-    id: "bridal",
+    id: "bridal-makeup",
     icon: Sparkles,
-    title: "Bridal & Party Makeup",
-    description: "Look stunning on your special day with our premium makeup services",
+    title: "Bridal Makeup in Manesar",
+    description: "Wedding-day makeup, engagement looks, HD and airbrush options, skin preparation, and draping, tailored to your occasion.",
     services: [
       { name: "Party Makeup", price: "₹1,099" },
       { name: "HD Party Makeup", price: "₹2,099" },
@@ -22,10 +23,10 @@ const servicesData = [
     ],
   },
   {
-    id: "facial",
+    id: "facial-skincare",
     icon: Heart,
-    title: "Facial & Skin Care",
-    description: "Rejuvenate your skin with our range of premium facials",
+    title: "Facial & Skincare Services",
+    description: "Facial and skincare services in Manesar, from cleanups and de-tan care to hydrating and glow facials.",
     services: [
       { name: "Cleanup", price: "₹149" },
       { name: "Fruit Facial", price: "₹249" },
@@ -48,10 +49,10 @@ const servicesData = [
     ],
   },
   {
-    id: "hair",
+    id: "hair-styling",
     icon: Scissors,
-    title: "Hair Cut & Treatment",
-    description: "Complete hair care from trendy cuts to premium treatments",
+    title: "Hair Styling",
+    description: "Hair styling in Manesar, from everyday cuts to occasion-ready looks.",
     services: [
       { name: "Front Trim", price: "₹49" },
       { name: "U/V Cut", price: "₹99" },
@@ -73,8 +74,8 @@ const servicesData = [
   {
     id: "waxing",
     icon: Leaf,
-    title: "Waxing & Hair Removal",
-    description: "Smooth skin with our premium waxing services",
+    title: "Waxing",
+    description: "Waxing services in Manesar using gentle techniques for face and body care.",
     services: [
       { name: "Upper Lips", price: "₹29" },
       { name: "Chin", price: "₹29" },
@@ -97,10 +98,10 @@ const servicesData = [
     ],
   },
   {
-    id: "nails",
+    id: "nail-services",
     icon: Hand,
     title: "Nail Services",
-    description: "Professional nail care and beautiful nail art",
+    description: "Nail services in Manesar, including nail care, polish, gel applications, extensions, and nail art.",
     services: [
       { name: "Nail Cutting & Filing", price: "₹49" },
       { name: "Nail Paint", price: "₹99" },
@@ -111,10 +112,10 @@ const servicesData = [
     ],
   },
   {
-    id: "pedicure",
+    id: "manicure-pedicure",
     icon: Footprints,
     title: "Manicure & Pedicure",
-    description: "Complete hand and foot care services",
+    description: "Manicure and pedicure services in Manesar for considered hand and foot care.",
     services: [
       { name: "Manicure (Normal)", price: "₹149" },
       { name: "Manicure (Pro)", price: "₹299" },
@@ -143,10 +144,10 @@ const Services = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-6">
-              Our Services
+              Beauty Services in Manesar
             </h1>
             <p className="text-lg text-muted-foreground">
-              Discover our comprehensive range of beauty services designed to enhance your natural beauty
+              Discover makeup, skincare, hair, waxing, and nail services at Priyanka Makeover in Manesar, Gurugram.
             </p>
           </div>
         </div>
@@ -157,7 +158,7 @@ const Services = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {servicesData.map((category) => (
-              <Card key={category.id} className="overflow-hidden">
+              <Card key={category.id} id={category.id} className="overflow-hidden scroll-mt-28">
                 <CardHeader className="bg-secondary/30">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -166,6 +167,18 @@ const Services = () => {
                     <div>
                       <CardTitle className="text-xl text-primary">{category.title}</CardTitle>
                       <CardDescription>{category.description}</CardDescription>
+                      {category.id === "bridal-makeup" && (
+                        <div id="party-makeup" className="mt-3 scroll-mt-28">
+                          <h4 className="text-sm font-semibold text-foreground">Party Makeup in Manesar</h4>
+                          <p className="mt-1 text-sm text-muted-foreground">Polished makeup for celebrations and evening events, with styling tailored to your look.</p>
+                        </div>
+                      )}
+                      {category.id === "hair-styling" && (
+                        <div id="hair-treatments" className="mt-3 scroll-mt-28">
+                          <h4 className="text-sm font-semibold text-foreground">Hair Treatments in Manesar</h4>
+                          <p className="mt-1 text-sm text-muted-foreground">Choose from hair spa, keratin, smoothening, and other treatments for your hair-care routine.</p>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </CardHeader>
@@ -190,12 +203,18 @@ const Services = () => {
                       </AccordionContent>
                     </AccordionItem>
                   </Accordion>
-                  <Button
-                    className="w-full mt-4"
-                    onClick={() => handleBookNow(category.title)}
-                  >
-                    Book {category.title}
-                  </Button>
+                  {category.id === "bridal-makeup" ? (
+                    <Button asChild className="w-full mt-4">
+                      <Link to="/contact#book-appointment">Book Bridal Makeup</Link>
+                    </Button>
+                  ) : (
+                    <Button
+                      className="w-full mt-4"
+                      onClick={() => handleBookNow(category.title)}
+                    >
+                      Book {category.title}
+                    </Button>
+                  )}
                 </CardContent>
               </Card>
             ))}
@@ -265,15 +284,20 @@ const Services = () => {
           <p className="text-primary-foreground/80 mb-6 max-w-xl mx-auto">
             Contact us for custom packages or any service not listed here. We're happy to help!
           </p>
-          <Button asChild size="lg" variant="secondary">
-            <a
-              href="https://wa.me/919650061103?text=Hi!%20I%20have%20a%20query%20about%20your%20services."
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Contact Us on WhatsApp
-            </a>
-          </Button>
+          <div className="flex justify-center gap-3 flex-wrap">
+            <Button asChild size="lg" variant="secondary">
+              <a
+                href="https://wa.me/919650061103?text=Hi!%20I%20have%20a%20query%20about%20your%20services."
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Contact Us on WhatsApp
+              </a>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10">
+              <Link to="/contact#book-appointment">Book an Appointment</Link>
+            </Button>
+          </div>
         </div>
       </section>
     </div>
