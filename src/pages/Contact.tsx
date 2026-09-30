@@ -10,18 +10,18 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Phone, MapPin, Clock, Instagram, MessageCircle, X, ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
 
 // Salon images
-import salonStorefront from "@/assets/salon/storefront.jpg";
-import salonInterior1 from "@/assets/salon/interior-1.jpg";
-import salonInterior2 from "@/assets/salon/interior-2.jpg";
-import salonInterior3 from "@/assets/salon/interior-3.jpg";
-import salonInterior4 from "@/assets/salon/interior-4.jpg";
+import salonStorefront from "@/assets/salon/storefront.webp";
+import salonInterior1 from "@/assets/salon/interior-1.webp";
+import salonInterior2 from "@/assets/salon/interior-2.webp";
+import salonInterior3 from "@/assets/salon/interior-3.webp";
+import salonInterior4 from "@/assets/salon/interior-4.webp";
 
 const salonImages = [
-  { src: salonStorefront, alt: "Priyanka Makeover Storefront" },
-  { src: salonInterior1, alt: "Salon styling station" },
-  { src: salonInterior2, alt: "Salon products and equipment" },
-  { src: salonInterior3, alt: "Salon treatment area" },
-  { src: salonInterior4, alt: "Salon waiting area" },
+  { src: salonStorefront, alt: "Priyanka Makeover entrance in Sector 1B, Manesar" },
+  { src: salonInterior1, alt: "Styling station inside Priyanka Makeover" },
+  { src: salonInterior2, alt: "Beauty products and tools at Priyanka Makeover" },
+  { src: salonInterior3, alt: "Beauty treatment area at Priyanka Makeover in Manesar" },
+  { src: salonInterior4, alt: "Waiting area at Priyanka Makeover salon" },
 ];
 
 const Contact = () => {
@@ -201,8 +201,9 @@ Please confirm my booking. Thank you!`;
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Address</h3>
-                      <a href="https://maps.app.goo.gl/Dp7QxtXZ5L3ZULaJA" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                        Priyanka Makeover, Sector 1B, Manesar, Gurugram
+                      <a href="https://www.google.com/maps/dir/?api=1&destination=Computer%20Gali%2C%20near%20NSG%20Campus%2C%20Sector%201B%2C%20Manesar%2C%20Gurugram%2C%20Haryana%20122051" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                        <strong className="block text-foreground">Priyanka Makeover</strong>
+                        Computer Gali, near NSG Campus, Sector 1B, Manesar, Gurugram, Haryana 122051
                       </a>
                     </div>
                   </CardContent>
@@ -514,7 +515,7 @@ Please confirm my booking. Thank you!`;
         <div className="container mx-auto px-4">
           <div className="rounded-2xl overflow-hidden border border-border relative">
             <a
-              href="https://maps.app.goo.gl/iXNcSGwJK7DcQ6VA8"
+              href="https://www.google.com/maps/dir/?api=1&destination=Computer%20Gali%2C%20near%20NSG%20Campus%2C%20Sector%201B%2C%20Manesar%2C%20Gurugram%2C%20Haryana%20122051"
               target="_blank"
               rel="noopener noreferrer"
               className="absolute top-3 left-3 z-10 text-sm text-primary hover:text-primary/80 hover:underline bg-background/90 px-2 py-1 rounded"
@@ -535,11 +536,11 @@ Please confirm my booking. Thank you!`;
           </div>
           <div className="text-center mt-6">
             <p className="text-muted-foreground mb-3">
-              Priyanka Makeover, Sector 1B, Manesar, Gurugram
+              Priyanka Makeover, Computer Gali, near NSG Campus, Sector 1B, Manesar, Gurugram, Haryana 122051
             </p>
             <Button asChild variant="outline">
               <a
-                href="https://maps.app.goo.gl/cFqYDMdj7WtN1rGw8"
+                href="https://www.google.com/maps/dir/?api=1&destination=Computer%20Gali%2C%20near%20NSG%20Campus%2C%20Sector%201B%2C%20Manesar%2C%20Gurugram%2C%20Haryana%20122051"
                 target="_blank"
                 rel="noopener noreferrer"
               >

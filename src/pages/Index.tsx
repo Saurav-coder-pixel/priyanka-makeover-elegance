@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import heroPortrait from "@/assets/hero-portrait.png";
-import bridal1 from "@/assets/transformations/bridal-1.png";
-import bridal2 from "@/assets/transformations/bridal-2.png";
-import bridal3 from "@/assets/transformations/bridal-3.png";
+import heroPortrait from "@/assets/hero-portrait.webp";
+import bridal1 from "@/assets/transformations/bridal-1.webp";
+import bridal2 from "@/assets/transformations/bridal-2.webp";
+import bridal3 from "@/assets/transformations/bridal-3.webp";
 
 // ── Reveal hook ───────────────────────────────────────────────────────
 function useReveal() {
@@ -65,7 +65,8 @@ const HeroSection = () => (
     >
       <img
         src={heroPortrait}
-        alt="Beautiful bridal makeup by Priyanka Makeover"
+        alt="Bridal makeup by Priyanka Makeover in Gurgaon"
+        fetchPriority="high"
         style={{
           width: "100%",
           height: "100%",
@@ -249,8 +250,8 @@ const ServicesSection = () => {
           </div>
           <div className="reveal reveal-d1">
             <p className="pm-lead">
-              Caring hands, premium-grade products, and personalized attention. Every service
-              is tailored to your unique skin type, personal style, and occasion.
+              At our beauty salon in Manesar, caring hands, premium-grade products, and personalized attention
+              come together for services tailored to your skin, personal style, and occasion.
             </p>
           </div>
         </div>
@@ -259,12 +260,12 @@ const ServicesSection = () => {
           {/* Left column */}
           <div>
             <div className="pm-menu-group reveal">
-              <h3><span style={{ color: "var(--pm-rose)", marginRight: "0.6rem" }}>✿</span> Bridal &amp; Party Makeup</h3>
-              <p className="pm-menu-note">Flawless bridal preparation including HD makeup, skin prep, and draping.</p>
+              <h3 id="bridal-makeup"><span style={{ color: "var(--pm-rose)", marginRight: "0.6rem" }}>✿</span> Bridal Makeup in Manesar</h3>
+              <p className="pm-menu-note">Bridal makeup, skin preparation, and draping tailored to your wedding look in Manesar.</p>
               <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
                 {[
                   { name: "Classic Bridal", desc: "HD makeup, full bridal glam, and long-lasting radiance" },
-                  { name: "Party Glam Makeup", desc: "Glamorous evening styling with precision contouring and lashes" },
+                  { name: "Party Glam Makeup", desc: "Glamorous evening styling with precision contouring and lashes", id: "party-makeup" },
                   { name: "Engagement & Reception", desc: "Dewy, luminous looks crafted for your milestone celebrations" },
                 ].map((item) => (
                   <li key={item.name} style={{ padding: "0.9rem 0", borderBottom: "1px solid var(--pm-line-soft)" }}>
@@ -276,8 +277,8 @@ const ServicesSection = () => {
             </div>
 
             <div className="pm-menu-group reveal reveal-d1">
-              <h3><span style={{ color: "var(--pm-rose)", marginRight: "0.6rem" }}>✿</span> Facial &amp; Skin Care</h3>
-              <p className="pm-menu-note">Rejuvenate and glow with our curated therapeutic facial rituals.</p>
+              <h3 id="facial-skincare"><span style={{ color: "var(--pm-rose)", marginRight: "0.6rem" }}>✿</span> Facial and Skincare Services in Manesar</h3>
+              <p className="pm-menu-note">Explore facial and skincare services in Manesar, including hydration, glow, and de-tan rituals.</p>
               <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
                 {[
                   { name: "Korean Glass Skin Ritual", desc: "Deep hydration & luminous glow K-beauty treatment" },
@@ -296,8 +297,8 @@ const ServicesSection = () => {
           {/* Right column */}
           <div>
             <div className="pm-menu-group reveal reveal-d2">
-              <h3><span style={{ color: "var(--pm-rose)", marginRight: "0.6rem" }}>✿</span> Hair Styling &amp; Care</h3>
-              <p className="pm-menu-note">From sleek smoothening treatments to elaborate bridal hair artistry.</p>
+              <h3 id="hair-styling"><span style={{ color: "var(--pm-rose)", marginRight: "0.6rem" }}>✿</span> Hair Styling &amp; Treatments in Manesar</h3>
+              <p className="pm-menu-note">Hair styling for celebrations, plus hair treatments in Manesar such as spa, keratin, and smoothening.</p>
               <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
                 {[
                   { name: "Keratin & Smoothening", desc: "Silky, frizz-free treatments for long-lasting gloss and control" },
@@ -313,8 +314,8 @@ const ServicesSection = () => {
             </div>
 
             <div className="pm-menu-group reveal reveal-d3">
-              <h3><span style={{ color: "var(--pm-rose)", marginRight: "0.6rem" }}>✿</span> Waxing &amp; Nail Care</h3>
-              <p className="pm-menu-note">Complete body care with hygienic tools and gentle techniques.</p>
+              <h3 id="waxing-nails"><span style={{ color: "var(--pm-rose)", marginRight: "0.6rem" }}>✿</span> Waxing and Nail Services in Manesar</h3>
+              <p className="pm-menu-note">Waxing and nail services in Manesar, with gentle techniques and care for hands and feet.</p>
               <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
                 {[
                   { name: "Rica & Chocolate Waxing", desc: "Gentle, skin-friendly waxing for effortless, silky smoothness" },
@@ -350,9 +351,9 @@ const ServicesSection = () => {
 // ── Gallery ───────────────────────────────────────────────────────────
 const GallerySection = () => {
   const galleryItems = [
-    { src: bridal1, style: "Bridal", caption: "Classic Bridal Look" },
-    { src: bridal2, style: "Party", caption: "Party Glam Makeup" },
-    { src: bridal3, style: "Bridal", caption: "Soft Dewy Bridal" },
+    { src: bridal1, style: "Bridal", caption: "Classic Bridal Look", alt: "Priyanka Makeover bridal beauty services in Manesar" },
+    { src: bridal2, style: "Party", caption: "Party Glam Makeup", alt: "Party makeup look created at Priyanka Makeover" },
+    { src: bridal3, style: "Bridal", caption: "Soft Dewy Bridal", alt: "Soft dewy bridal makeup by Priyanka Makeover in Manesar" },
   ];
   return (
     <section className="pm-section pm-bg-blush" id="gallery">
@@ -368,7 +369,7 @@ const GallerySection = () => {
         <div className="pm-gallery reveal reveal-d1">
           {galleryItems.map((item, i) => (
             <div key={i} className="pm-gallery-item">
-              <img src={item.src} alt={item.caption} loading="lazy" />
+              <img src={item.src} alt={item.alt} loading="lazy" />
               <div className="pm-gallery-cap">
                 <span>{item.style}</span>
                 <strong>{item.caption}</strong>
@@ -611,8 +612,7 @@ const VisitSection = () => (
           <span className="pm-eyebrow">Hours &amp; Location</span>
           <h2 className="pm-h2">Come and see us</h2>
           <p className="pm-lead">
-            Located in Manesar, Gurugram — in Computer Gali, near NSG Campus.
-            Easily accessible from NH-48.
+            Priyanka Makeover is located at Computer Gali, near NSG Campus, Sector 1B, Manesar, Gurugram, Haryana 122051.
           </p>
 
           <ul className="pm-hours-list" style={{ marginTop: "2rem" }}>
@@ -632,12 +632,12 @@ const VisitSection = () => (
               <div>
                 <strong>Salon Location</strong>
                 <a
-                  href="https://maps.app.goo.gl/iXNcSGwJK7DcQ6VA8"
+                  href="https://www.google.com/maps/dir/?api=1&destination=Computer%20Gali%2C%20near%20NSG%20Campus%2C%20Sector%201B%2C%20Manesar%2C%20Gurugram%2C%20Haryana%20122051"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ color: "var(--pm-rose-deep)" }}
                 >
-                  Computer Gali, near NSG Campus, Sector 1B, Manesar, Gurugram 122051
+                  Computer Gali, near NSG Campus, Sector 1B, Manesar, Gurugram, Haryana 122051
                 </a>
               </div>
             </div>
@@ -681,7 +681,7 @@ const VisitSection = () => (
             />
           </div>
           <a
-            href="https://maps.app.goo.gl/iXNcSGwJK7DcQ6VA8"
+            href="https://www.google.com/maps/dir/?api=1&destination=Computer%20Gali%2C%20near%20NSG%20Campus%2C%20Sector%201B%2C%20Manesar%2C%20Gurugram%2C%20Haryana%20122051"
             target="_blank"
             rel="noopener noreferrer"
             className="pm-btn pm-btn-primary"
@@ -695,6 +695,24 @@ const VisitSection = () => (
     <style>{`
       @media (max-width: 991px) { .visit-grid { grid-template-columns: 1fr !important; gap: 3rem !important; } }
     `}</style>
+  </section>
+);
+
+const LocalBeautySection = () => (
+  <section className="pm-section pm-bg-blush" id="local-beauty">
+    <div style={{ maxWidth: "980px", margin: "0 auto", padding: "0 1.5rem", textAlign: "center" }}>
+      <span className="pm-eyebrow pm-eyebrow-center">Serving Manesar &amp; nearby Gurugram</span>
+      <h2 className="pm-h2">Your Local Beauty Destination in Manesar</h2>
+      <p className="pm-lead" style={{ margin: "0 auto 1.5rem", maxWidth: "70ch" }}>
+        Priyanka Makeover is a beauty salon in Sector 1B, Manesar, Gurugram, welcoming customers from Manesar and nearby parts of Gurugram. Visit us for bridal and party makeup, facials and skincare, hair styling and treatments, waxing, nail care, manicure, pedicure, and other beauty services.
+      </p>
+      <div style={{ display: "flex", justifyContent: "center", gap: "1rem", flexWrap: "wrap" }}>
+        <Link to="/services" className="pm-btn pm-btn-primary" style={{ textDecoration: "none" }}>Explore Services</Link>
+        <Link to="/services#bridal-makeup" className="pm-btn pm-btn-outline" style={{ textDecoration: "none" }}>Bridal Makeup</Link>
+        <Link to="/offers" className="pm-btn pm-btn-outline" style={{ textDecoration: "none" }}>Current Offers</Link>
+        <Link to="/contact" className="pm-btn pm-btn-outline" style={{ textDecoration: "none" }}>Contact &amp; Location</Link>
+      </div>
+    </div>
   </section>
 );
 
@@ -783,6 +801,7 @@ const Index = () => {
       {/* <PackagesSection /> */}
       <TestimonialsSection />
       <VisitSection />
+      <LocalBeautySection />
       <CTASection />
     </>
   );

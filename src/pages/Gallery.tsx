@@ -2,20 +2,20 @@ import { useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Sparkles, Heart, Scissors, Hand, Footprints } from "lucide-react";
-import bridal1 from "@/assets/gallery/bridal-1.png";
-import bridal2 from "@/assets/gallery/bridal-2.png";
-import partyMakeup from "@/assets/gallery/party-makeup.png";
-import facialTreatment from "@/assets/gallery/facial-treatment.png";
-import hairStyling from "@/assets/gallery/hair-styling.png";
-import hairTreatment from "@/assets/gallery/hair-treatment.png";
-import hairColor from "@/assets/gallery/hair-color.png";
-import nailArt from "@/assets/gallery/nail-art.png";
-import manicure from "@/assets/gallery/manicure.png";
-import engagementMakeup from "@/assets/gallery/engagement-makeup.png";
-import goldFacial from "@/assets/gallery/gold-facial.png";
-import pedicure from "@/assets/gallery/pedicure.png";
-import hairSmoothing from "@/assets/gallery/hair-smoothing.png";
-import waxing from "@/assets/gallery/waxing.png";
+import bridal1 from "@/assets/gallery/bridal-1.webp";
+import bridal2 from "@/assets/gallery/bridal-2.webp";
+import partyMakeup from "@/assets/gallery/party-makeup.webp";
+import facialTreatment from "@/assets/gallery/facial-treatment.webp";
+import hairStyling from "@/assets/gallery/hair-styling.webp";
+import hairTreatment from "@/assets/gallery/hair-treatment.webp";
+import hairColor from "@/assets/gallery/hair-color.webp";
+import nailArt from "@/assets/gallery/nail-art.webp";
+import manicure from "@/assets/gallery/manicure.webp";
+import engagementMakeup from "@/assets/gallery/engagement-makeup.webp";
+import goldFacial from "@/assets/gallery/gold-facial.webp";
+import pedicure from "@/assets/gallery/pedicure.webp";
+import hairSmoothing from "@/assets/gallery/hair-smoothing.webp";
+import waxing from "@/assets/gallery/waxing.webp";
 
 const galleryData = {
   all: { title: "All", icon: Sparkles },
@@ -27,20 +27,20 @@ const galleryData = {
 };
 
 const galleryImages = [
-  { id: 1, category: "bridal", title: "Bridal Makeup 1", image: bridal1 },
-  { id: 2, category: "bridal", title: "Bridal Makeup 2", image: bridal2 },
-  { id: 3, category: "bridal", title: "Party Makeup", image: partyMakeup },
-  { id: 4, category: "facial", title: "Facial Treatment", image: facialTreatment },
-  { id: 5, category: "hair", title: "Hair Styling", image: hairStyling },
-  { id: 6, category: "hair", title: "Hair Treatment", image: hairTreatment },
-  { id: 7, category: "hair", title: "Hair Color", image: hairColor },
-  { id: 8, category: "nails", title: "Nail Art", image: nailArt },
-  { id: 9, category: "nails", title: "Manicure", image: manicure },
-  { id: 10, category: "bridal", title: "Engagement Makeup", image: engagementMakeup },
-  { id: 11, category: "facial", title: "Gold Facial", image: goldFacial },
-  { id: 12, category: "nails", title: "Pedicure", image: pedicure },
-  { id: 13, category: "hair", title: "Hair Smoothing", image: hairSmoothing },
-  { id: 14, category: "body", title: "Waxing", image: waxing },
+  { id: 1, category: "bridal", title: "Bridal Makeup 1", alt: "Bridal makeup by Priyanka Makeover in Manesar", image: bridal1 },
+  { id: 2, category: "bridal", title: "Bridal Makeup 2", alt: "Bridal beauty look created at Priyanka Makeover", image: bridal2 },
+  { id: 3, category: "bridal", title: "Party Makeup", alt: "Party makeup look by Priyanka Makeover", image: partyMakeup },
+  { id: 4, category: "facial", title: "Facial Treatment", alt: "Beauty facial service at Priyanka Makeover Manesar", image: facialTreatment },
+  { id: 5, category: "hair", title: "Hair Styling", alt: "Occasion hair styling at Priyanka Makeover", image: hairStyling },
+  { id: 6, category: "hair", title: "Hair Treatment", alt: "Hair treatment service at Priyanka Makeover in Manesar", image: hairTreatment },
+  { id: 7, category: "hair", title: "Hair Color", alt: "Hair colour service at Priyanka Makeover", image: hairColor },
+  { id: 8, category: "nails", title: "Nail Art", alt: "Nail art created at Priyanka Makeover", image: nailArt },
+  { id: 9, category: "nails", title: "Manicure", alt: "Manicure service at Priyanka Makeover in Manesar", image: manicure },
+  { id: 10, category: "bridal", title: "Engagement Makeup", alt: "Engagement makeup look by Priyanka Makeover", image: engagementMakeup },
+  { id: 11, category: "facial", title: "Gold Facial", alt: "Gold facial treatment at Priyanka Makeover", image: goldFacial },
+  { id: 12, category: "nails", title: "Pedicure", alt: "Pedicure service at Priyanka Makeover in Manesar", image: pedicure },
+  { id: 13, category: "hair", title: "Hair Smoothing", alt: "Hair smoothening treatment at Priyanka Makeover", image: hairSmoothing },
+  { id: 14, category: "body", title: "Waxing", alt: "Waxing service at Priyanka Makeover in Manesar", image: waxing },
 ];
 
 const Gallery = () => {
@@ -97,7 +97,7 @@ const Gallery = () => {
                         {image.image ? (
                           <img 
                             src={image.image} 
-                            alt={image.title}
+                            alt={image.alt}
                             className="absolute inset-0 w-full h-full object-cover"
                           />
                         ) : (
@@ -121,7 +121,7 @@ const Gallery = () => {
                       {image.image ? (
                         <img 
                           src={image.image} 
-                          alt={image.title}
+                          alt={image.alt}
                           className="w-full h-auto max-h-[80vh] object-contain"
                         />
                       ) : (
