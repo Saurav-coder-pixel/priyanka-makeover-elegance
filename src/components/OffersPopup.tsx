@@ -46,14 +46,14 @@ const OffersPopup = () => {
 
   return (
     <div 
-      className={`fixed inset-0 z-[2000] flex items-center justify-center p-4 transition-all duration-400 ease-in-out ${
+      className={`fixed inset-0 z-[2000] flex items-center justify-center p-2 md:p-4 transition-all duration-400 ease-in-out ${
         isVisible ? "opacity-100 backdrop-blur-sm bg-black/50" : "opacity-0 backdrop-blur-none bg-black/0"
       }`}
       onClick={closePopup}
     >
       {/* Popup Container */}
       <div 
-        className={`relative w-full max-w-[420px] bg-[#FCFAF8] rounded-[24px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)] transition-all duration-400 ease-out border border-[#eae0d5] flex flex-col ${
+        className={`relative w-[90%] md:w-full max-w-[420px] max-h-[calc(100dvh-1rem)] md:max-h-[90dvh] overflow-y-auto bg-[#FCFAF8] rounded-[24px] shadow-[0_20px_50px_rgba(0,0,0,0.2)] transition-all duration-400 ease-out border border-[#eae0d5] flex flex-col ${
           isVisible ? "scale-100 translate-y-0 opacity-100" : "scale-95 translate-y-8 opacity-0"
         }`}
         onClick={(e) => e.stopPropagation()}
@@ -68,7 +68,7 @@ const OffersPopup = () => {
         </button>
 
         {/* Top Image Area */}
-        <div className="relative h-[220px] w-full overflow-hidden z-0">
+        <div className="relative h-[120px] md:h-[220px] w-full shrink-0 overflow-hidden z-0">
           <img 
             src={selectedOffer.image} 
             alt={selectedOffer.title} 
@@ -80,7 +80,7 @@ const OffersPopup = () => {
         </div>
 
         {/* Content Area */}
-        <div className="relative z-10 px-8 pb-8 -mt-6 flex flex-col">
+        <div className="relative z-10 px-5 pb-5 md:px-8 md:pb-8 -mt-5 md:-mt-6 flex flex-col">
           {/* Badge & Category */}
           <div className="flex justify-center mb-2">
             <span className="text-[#2a1d25] bg-[#dfbe8c] text-[0.6rem] font-bold tracking-[0.2em] uppercase px-3 py-1 rounded-full shadow-sm">
@@ -88,18 +88,18 @@ const OffersPopup = () => {
             </span>
           </div>
 
-          <h3 className="font-serif text-3xl text-[#2a1d25] text-center leading-[1.1] mb-2 mt-1">
+          <h3 className="font-serif text-2xl md:text-3xl text-[#2a1d25] text-center leading-[1.1] mb-1 md:mb-2 mt-1">
             {selectedOffer.title}
           </h3>
           
-          <div className="w-10 h-[1.5px] bg-[#dfbe8c] mx-auto mb-3"></div>
+          <div className="w-10 h-[1.5px] bg-[#dfbe8c] mx-auto mb-2 md:mb-3"></div>
           
-          <p className="font-serif text-[#7c6270] italic text-[1.05rem] text-center leading-snug mb-5 px-2">
+          <p className="font-serif text-[#7c6270] italic text-[0.9rem] md:text-[1.05rem] text-center leading-snug mb-3 md:mb-5 px-2">
             "{selectedOffer.description}"
           </p>
 
           {/* Highlight Service */}
-          <div className="bg-white rounded-xl p-3 mb-6 shadow-sm border border-[#eae0d5]/50 flex items-center justify-center gap-3">
+          <div className="bg-white rounded-xl p-2.5 md:p-3 mb-3 md:mb-6 shadow-sm border border-[#eae0d5]/50 flex items-center justify-center gap-3">
             <Sparkles size={16} className="text-[#b57a70]" />
             <span className="text-[0.8rem] text-[#2a1d25] uppercase tracking-wider font-medium">
               {selectedOffer.services[0]?.title || "Premium Package"}
@@ -108,12 +108,12 @@ const OffersPopup = () => {
           </div>
 
           {/* Price Area */}
-          <div className="text-center mb-6">
+          <div className="text-center mb-3 md:mb-6">
             {selectedOffer.discountedPrice !== undefined ? (
               selectedOffer.startingFrom ? (
                 <div className="flex flex-col items-center">
                   <span className="text-[#9c2937] text-[0.65rem] font-bold tracking-widest uppercase mb-1 opacity-80">Starting From</span>
-                  <span className="font-serif text-[2.5rem] text-[#9c2937] font-semibold leading-none">
+                  <span className="font-serif text-[2rem] md:text-[2.5rem] text-[#9c2937] font-semibold leading-none">
                     ₹{selectedOffer.discountedPrice.toLocaleString('en-IN')}
                   </span>
                   {selectedOffer.pricingNote && (
@@ -123,7 +123,7 @@ const OffersPopup = () => {
               ) : (
                 <div className="flex flex-col items-center justify-center">
                   <div className="flex items-center justify-center gap-3">
-                    <span className="font-serif text-[2.5rem] text-[#9c2937] font-semibold leading-none">
+                    <span className="font-serif text-[2rem] md:text-[2.5rem] text-[#9c2937] font-semibold leading-none">
                       ₹{selectedOffer.discountedPrice.toLocaleString('en-IN')}
                     </span>
                     {selectedOffer.originalPrice && (
@@ -153,14 +153,14 @@ const OffersPopup = () => {
             <div className="flex gap-3 mb-4">
               <button 
                 onClick={() => setShowContactOptions(true)}
-                className="flex-1 bg-[#1a1c1d] hover:bg-black text-white rounded-full py-4 flex items-center justify-center gap-3 tracking-[0.18em] text-[0.7rem] transition-all duration-300 shadow-md"
+                className="flex-1 bg-[#1a1c1d] hover:bg-black text-white rounded-full py-3 md:py-4 flex items-center justify-center gap-3 tracking-[0.18em] text-[0.7rem] transition-all duration-300 shadow-md"
               >
                 BOOK NOW <span className="transition-transform duration-300 hover:translate-x-1">→</span>
               </button>
               <Link
                 to="/offers"
                 onClick={closePopup}
-                className="flex-1 border border-[#d9c8b6] bg-[#f5efe8] text-[#2a1d25] hover:bg-[#efe5db] rounded-full py-4 flex items-center justify-center gap-2 tracking-[0.18em] text-[0.7rem] transition-all duration-300 shadow-sm"
+                className="flex-1 border border-[#d9c8b6] bg-[#f5efe8] text-[#2a1d25] hover:bg-[#efe5db] rounded-full py-3 md:py-4 flex items-center justify-center gap-2 tracking-[0.18em] text-[0.7rem] transition-all duration-300 shadow-sm"
                 style={{ textDecoration: "none" }}
               >
                 MORE INFO
