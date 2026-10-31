@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Sparkles, Heart, Scissors, Hand, Footprints } from "lucide-react";
+import { Sparkles, Heart, Scissors, Hand, Footprints, Building2 } from "lucide-react";
 import bridal1 from "@/assets/gallery/bridal-1.webp";
 import bridal2 from "@/assets/gallery/bridal-2.webp";
 import partyMakeup from "@/assets/gallery/party-makeup.webp";
@@ -16,6 +16,13 @@ import goldFacial from "@/assets/gallery/gold-facial.webp";
 import pedicure from "@/assets/gallery/pedicure.webp";
 import hairSmoothing from "@/assets/gallery/hair-smoothing.webp";
 import waxing from "@/assets/gallery/waxing.webp";
+import makeup2 from "@/assets/transformations/makeup2.jpg";
+import makeup3 from "@/assets/transformations/makeup3.jpg";
+import salonStorefront from "@/assets/salon/storefront.webp";
+import salonInterior1 from "@/assets/salon/interior-1.webp";
+import salonInterior2 from "@/assets/salon/interior-2.webp";
+import salonInterior3 from "@/assets/salon/interior-3.webp";
+import salonInterior4 from "@/assets/salon/interior-4.webp";
 
 const galleryData = {
   all: { title: "All", icon: Sparkles },
@@ -24,6 +31,7 @@ const galleryData = {
   hair: { title: "Hair", icon: Scissors },
   nails: { title: "Nails", icon: Hand },
   body: { title: "Body Care", icon: Footprints },
+  salon: { title: "Salon Ambiance", icon: Building2 },
 };
 
 const galleryImages = [
@@ -41,6 +49,13 @@ const galleryImages = [
   { id: 12, category: "nails", title: "Pedicure", alt: "Pedicure service at Priyanka Makeover in Manesar", image: pedicure },
   { id: 13, category: "hair", title: "Hair Smoothing", alt: "Hair smoothening treatment at Priyanka Makeover", image: hairSmoothing },
   { id: 14, category: "body", title: "Waxing", alt: "Waxing service at Priyanka Makeover in Manesar", image: waxing },
+  { id: 15, category: "bridal", title: "Bridal Elegance Makeover", alt: "Bridal elegance makeover at Priyanka Makeover", image: makeup2 },
+  { id: 16, category: "bridal", title: "Radiant Beauty Transformation", alt: "Radiant beauty transformation at Priyanka Makeover", image: makeup3 },
+  { id: 17, category: "salon", title: "Salon Storefront & Entrance", alt: "Priyanka Makeover entrance in Sector 1B, Manesar", image: salonStorefront },
+  { id: 18, category: "salon", title: "Styling Station & Interior", alt: "Styling station inside Priyanka Makeover", image: salonInterior1 },
+  { id: 19, category: "salon", title: "Beauty Products & Tools", alt: "Beauty products and tools at Priyanka Makeover", image: salonInterior2 },
+  { id: 20, category: "salon", title: "Beauty Treatment Area", alt: "Beauty treatment area at Priyanka Makeover in Manesar", image: salonInterior3 },
+  { id: 21, category: "salon", title: "Client Waiting Lounge", alt: "Waiting area at Priyanka Makeover salon", image: salonInterior4 },
 ];
 
 const Gallery = () => {

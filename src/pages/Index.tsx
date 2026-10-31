@@ -4,6 +4,9 @@ import heroPortrait from "@/assets/hero-portrait.webp";
 import bridal1 from "@/assets/transformations/bridal-1.webp";
 import bridal2 from "@/assets/transformations/bridal-2.webp";
 import bridal3 from "@/assets/transformations/bridal-3.webp";
+import makeup2 from "@/assets/transformations/makeup2.jpg";
+import makeup3 from "@/assets/transformations/makeup3.jpg";
+import salonInterior1 from "@/assets/salon/interior-1.webp";
 
 // ── Reveal hook ───────────────────────────────────────────────────────
 function useReveal() {
@@ -354,6 +357,9 @@ const GallerySection = () => {
     { src: bridal1, style: "Bridal", caption: "Classic Bridal Look", alt: "Priyanka Makeover bridal beauty services in Manesar" },
     { src: bridal2, style: "Party", caption: "Party Glam Makeup", alt: "Party makeup look created at Priyanka Makeover" },
     { src: bridal3, style: "Bridal", caption: "Soft Dewy Bridal", alt: "Soft dewy bridal makeup by Priyanka Makeover in Manesar" },
+    { src: makeup2, style: "Bridal", caption: "Traditional Bridal Elegance", alt: "Bridal elegance transformation at Priyanka Makeover" },
+    { src: makeup3, style: "Makeover", caption: "Radiant Beauty Makeover", alt: "Radiant beauty makeover by Priyanka Makeover in Manesar" },
+    { src: salonInterior1, style: "Salon", caption: "Our Premium Studio", alt: "Styling station and premium ambience inside Priyanka Makeover" },
   ];
   return (
     <section className="pm-section pm-bg-blush" id="gallery">
